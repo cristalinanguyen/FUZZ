@@ -1,2 +1,3 @@
 # FUZZ++
 Compiler Project for CMSI 488 at Loyola Marymount University
+ANNIE FLORA, AMELIA JAY, LIAM NAMBA, CRISTALINA NGUYEN, CHRISTIAN SANTANDER
