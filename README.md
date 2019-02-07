@@ -19,7 +19,7 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 ### Data Types
 boolean: `cozy` and `not_cozy`
 
-string: `my UGGs are soooo comfortable`
+string: `'my UGGs are soooo comfortable'`
 
 integer: `1`, `100`, `420`
 
@@ -27,7 +27,7 @@ float: `1.5`, `3.14`, `70.34799`
 
 None: `None`
 
-dictionary: `{'UGGs': cozy, 'jackets': cozy 'FUZZ++': cozy, 'lair food': not_cozy}`
+dictionary: `{'UGGs': cozy, 'jackets': cozy, 'FUZZ++': cozy, 'lair food': not_cozy}`
 
 set: `{1, 2, 95, 7}`
 
