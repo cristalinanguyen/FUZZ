@@ -27,6 +27,8 @@ float: `1.5`, `3.14`, `70.34799`
 
 None: `None`
 
+list: `[5, 6, 7, 8, 9, 10]`
+
 dictionary: `{'UGGs': cozy, 'jackets': cozy, 'FUZZ++': cozy, 'lair food': not_cozy}`
 
 set: `{1, 2, 95, 7}`
