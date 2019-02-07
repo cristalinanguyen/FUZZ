@@ -18,12 +18,12 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 
 ### Data Types
 - boolean: `cozy` and `not_cozy`
-- string: `'my UGGs are soooo comfortable'`
+- string: `"my UGGs are soooo comfortable"`
 - integer: `1`, `100`, `420`
 - float: `1.5`, `3.14`, `70.34799`
 - None: `None`
-- list: `[5, 6, 7, 8, 9, 10]`, `[['compilers', 'operating systems'], ['interaction design', 'plang', 'theory']]`
-- dictionary: `{'UGGs': cozy, 'jackets': cozy, 'FUZZ++': cozy, 'lair food': not_cozy}`
+- list: `[5, 6, 7, 8, 9, 10]`, `[["compilers", "operating systems"], ["interaction design", "plang", "theory"]]`
+- dictionary: `{"UGGs": cozy, "jackets": cozy, "FUZZ++"": cozy, "lair food": not_cozy}`
 - set: `{1, 2, 95, 7}`
 
 @group: we could also make float and int the same data type (number) and get rid of the last 3 types bc it might be too hard to do lol
@@ -31,9 +31,9 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
 ```
-fuzz annies_coffee_cart_order = 'iced chai with almond milk and a shot'!
+fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot"!
 fuzz num_of_juuls_chris_has_lost = 27!
-fuzz meels_favorite_snack = 'hot cheetos'!
+fuzz meels_favorite_snack = "hot cheetos"!
 fuzz dondi_wears_airpods = cozy!
 ```
 Notice that every line ends in an exclamation mark, `!`, and that is because cozy coding is just so much fun!
@@ -47,21 +47,52 @@ function dondi_wearing_airpods()~
   returnt cozy!
 ~
 
+function bjohnson()~
+  returnt "squirrel!"!
+~
+
 function mins_forney_spends_erasing(int classes)~
   fuzz time = 8 * classes!
   returnt time!
 ~
+
+function toal_playing_vball(boolean weather)~
+  iph (weather)~
+    returnt cozy!
+  ~ elz ~
+    return not_cozy!
+  ~
+~
+
+function dorin()~
+  returnt "among friends"!
+~
 ```
 
 ### `iph` Statements
-An `iph` statement is used as shown below and can be followed by 0 or more `if elz` statements and an optional `elz` statement.
+An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
 
 ```
+iph (weather == 1)~
+  fuzzies_wearing_jackets = cozy!
+~ elz iph (weather == 0)~
+  fuzzies_wearing_jackets = not_cozy!
+~ elz ~
+  return "I dont know what the fuzzies are wearing today."!
+~
 ```
 
+### `phor` Statements
+A `phor` statement executes the block of code inside the tildes `~` the number of times specified in the parentheses
+```
+phor (fuzz i = 0; i < 100; i++)~
+  print "WE LOVE FUZZIES"!
+~
+```
 
 ### Comments
-idk yet
+```
+```
 
 ### Arithmetic
 ```
@@ -111,8 +142,7 @@ A FUZZ++ statement is one of the following:
 - a `chill` statement (must appear in a loop and tells the program to chill out with that loop, break out of it, and move on to the code after the loop)
 - a `returnt` statement (returns a value from a function; it is an error if `returnt` appears somewhere other than in a function body)
 - an `iph`, `iph elz`, or `elz` statement
-- a `for` statement
-- a `whilst` statement
+- a `phor` statement
 - a `print` statement
 
-@group we need better names for for loop and print
+@group we need better names for print
