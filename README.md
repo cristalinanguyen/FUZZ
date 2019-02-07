@@ -1,18 +1,18 @@
 # FUZZ++
-Compiler Project for CMSI 488 at Loyola Marymount University by 
-ANNIE FLORA, AMELIA JAY, LIAM NAMBA, CRISTALINA NGUYEN, CHRISTIAN SANTANDER
+Compiler Project for CMSI 488 at Loyola Marymount University by
+ANNIE FLORA, AMELIA JAY, LIAM NAMBA, CRISTALINA NGUYEN, SOPHIA PROCHNOW, CHRISTIAN SANTANDER
 
 ![logo](https://user-images.githubusercontent.com/31746937/52384776-be8b2700-2a33-11e9-91c9-be75d5445533.jpeg)
 
 ## Introduction
-FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its raining outside, you're wearing your fuzzy jacket and your favorite pair of UGGs, and you didn't make it to class. You open your computer at home and can't wait to get your code on. You know that FUZZ++ is the go-to programming language for these types of #codingvibes. FUZZ++ is cozy, comfortable (with lots of practice), and most importantly fun! 
+FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its raining outside, you're wearing your fuzzy jacket and your favorite pair of UGGs, and you didn't make it to class. You open your computer at home and can't wait to get your code on. You know that FUZZ++ is the go-to programming language for these types of #codingvibes. FUZZ++ is cozy, comfortable (with lots of practice), and most importantly fun!
 
 ## Features
 - Data Structures
 - Statically Typed
 - Streams
-- If Statements
-- For Loops, While Loops
+- Iph (if) Statements
+- Phor (for) Loops, While Loops
 
 ## Examples
 
@@ -38,8 +38,27 @@ fuzz dondi_wears_airpods = cozy!
 ```
 Notice that every line ends in an exclamation mark, `!`, and that is because cozy coding is just so much fun!
 
-### Function Declarations and Function Calls
-idk yet
+### Function Declarations
+
+The tilde (~) is used to enclose method bodies, as well as group statements in 'iph' statements and 'phor' loops.
+
+```
+function dondi_wearing_airpods()~
+  returnt cozy!
+~
+
+function mins_forney_spends_erasing(int classes)~
+  fuzz time = 8 * classes;
+  returnt time!
+~
+```
+
+### `iph` Statements
+An `iph` statement is used as shown below and can be followed by 0 or more `if elz` statements and an optional `elz` statement.
+
+```
+```
+
 
 ### Comments
 idk yet
@@ -74,13 +93,6 @@ A set is an unordered group of unique elements of the same type.
 fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'}!
 ```
 
-### `iph` Statements
-An `iph` statement is used as shown below and can be followed by 0 or more `if elz` statements and an optional `elz` statement.
-```
-
-```
-
-
 ### Expressions
 A FUZZ++ expression is one of the following:
 - a boolean literal: `cozy` or `not_cozy`
@@ -104,5 +116,3 @@ A FUZZ++ statement is one of the following:
 - a `print` statement
 
 @group we need better names for for loop and print
-
-
