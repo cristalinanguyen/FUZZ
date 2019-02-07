@@ -48,7 +48,7 @@ function dondi_wearing_airpods()~
 ~
 
 function mins_forney_spends_erasing(int classes)~
-  fuzz time = 8 * classes;
+  fuzz time = 8 * classes!
   returnt time!
 ~
 ```
