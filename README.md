@@ -60,7 +60,7 @@ function toal_playing_vball(boolean weather)~
   iph (weather)~
     returnt cozy!
   ~ elz ~
-    return not_cozy!
+    returnt not_cozy!
   ~
 ~
 
