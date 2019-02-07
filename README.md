@@ -41,6 +41,46 @@ Notice that every line ends in an exclamation mark, `!`, and that is because coz
 ### Function Declarations and Function Calls
 idk yet
 
+### Comments
+idk yet
+
+### Arithmetic
+```
+fuzz sum = 2 + 4!
+fuzz difference = 4 - 2!
+fuzz product = 2 * 4!
+fuzz quotient = 4 / 2!
+```
+
+@group should we add mod % ??? bc i feel like that could be lit
+
+### Data Structures
+#### Lists
+A list is an ordered sequence of elements of the same type.
+```
+fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup']!
+```
+
+#### Dictionaries
+A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
+```
+fuzz example = {'key': 'value'}!
+fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00}!
+```
+
+#### Sets
+A set is an unordered group of unique elements of the same type.
+```
+fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'}!
+```
+
+### `iph` Statements
+An `iph` statement is used as shown below and can be followed by 0 or more `if elz` statements and an optional `elz` statement.
+```
+
+```
+
+
 ### Expressions
 A FUZZ++ expression is one of the following:
 - a boolean literal: `cozy` or `not_cozy`
@@ -64,32 +104,5 @@ A FUZZ++ statement is one of the following:
 - a `print` statement
 
 @group we need better names for for loop and print
-
-### Comments
-idk yet
-
-### Aritmetic
-
-### Data Structures
-#### Lists
-A list is an ordered sequence of elements of the same type.
-```
-fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup']
-```
-
-#### Dictionaries
-A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
-```
-fuzz example = {'key': 'value'}
-fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00}
-```
-
-#### Sets
-A set is an unordered group of unique elements of the same type.
-```
-fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'}
-```
-
-
 
 
