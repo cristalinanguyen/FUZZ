@@ -54,7 +54,16 @@ A FUZZ++ expression is one of the following:
 A FUZZ++ statement is one of the following:
 - a variable declaration
 - a function declaration
-some more stuff
+- an assignment statement (such as `a = b`, where `a` and `b` are both previously declared variables)
+- a function call
+- a `chill` statement (must appear in a loop and tells the program to chill out with that loop, break out of it, and move on to the code after the loop)
+- a `returnt` statement (returns a value from a function; it is an error if `returnt` appears somewhere other than in a function body)
+- an `iph`, `iph elz`, or `elz` statement
+- a `for` statement
+- a `whilst` statement
+- a `print` statement
+
+@group we need better names for for loop and print
 
 
 
