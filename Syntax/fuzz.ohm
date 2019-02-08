@@ -6,8 +6,11 @@ Fuzz {
                     | Call                  -- Call
                     | "chill"               -- break
                     | "returnt" Exp?        -- return
-     Exp =  Exp "or" Exp1                   -- or
+                    
+                    
+    Exp =  Exp "or" Exp1                    -- or
          | Exp "and" Exp1                   -- and
+         | Exp "not" Exp1                   -- not
          | Exp1
     Exp1 = Exp2 relop Exp2                  -- binary
          | Exp2
@@ -33,7 +36,7 @@ Fuzz {
     type = "boolean" | "string" | "integer" | "float" | "None" | "list" | "set"
     numlit = digit+ ("." digit+)?
     boollit = "cozy" | "not_cozy"
-    strlit = "\"" (~"\\" ~"\"" ~"\n" ~"\'" any)* "\""
+    strlit = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
     Exps = NonemptyListOf<Exp, ",">
 
     keyword = ( "iph elz" | "fuzz" | "phor" | "iph" | "cozy" | "not_cozy" | "returnt"
