@@ -1,0 +1,27 @@
+FUZZ {
+    Program = newLine* Statement* newLine*
+    Statement = Expression | Function | Assignment | Conditional | Loop | Returnt | Chill | Print
+    
+    
+    Expression = Exp1*
+    
+    Exp1  = Exp1 "+" Exp2     --add
+          | Exp1 "-" Exp2     --subtract
+          | Exp2
+    Exp2  = Exp2 "*" Exp3     --multiply
+          | Exp2 "/" Exp3     --divide
+          | Exp3
+    Exp3  = "-" Exp4          --negate
+          | Exp5
+    Exp5  = "(" Exp1 ")"       --parenth
+          | Exp6
+    Exp6  = Exp6 "&&" Exp5    --and
+          | Exp6 "||" Exp5    --or
+          | Exp6 "/=" Exp5    --not
+          | num
+    num   = digit+ ("." digit+)?
+    space := " "
+          | "\t"
+          | "\n"
+          | "//"
+          | 
