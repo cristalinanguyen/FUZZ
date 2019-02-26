@@ -1,27 +1,51 @@
-FUZZ {
-    Program = newLine* Statement* newLine*
-    Statement = Expression | Function | Assignment | Conditional | Loop | Returnt | Chill | Print
-    
-    
-    Expression = Exp1*
-    
-    Exp1  = Exp1 "+" Exp2     --add
-          | Exp1 "-" Exp2     --subtract
-          | Exp2
-    Exp2  = Exp2 "*" Exp3     --multiply
-          | Exp2 "/" Exp3     --divide
-          | Exp3
-    Exp3  = "-" Exp4          --negate
-          | Exp5
-    Exp5  = "(" Exp1 ")"       --parenth
-          | Exp6
-    Exp6  = Exp6 "&&" Exp5    --and
-          | Exp6 "||" Exp5    --or
-          | Exp6 "/=" Exp5    --not
-          | num
-    num   = digit+ ("." digit+)?
-    space := " "
-          | "\t"
-          | "\n"
-          | "//"
-          | 
+Fuzz {
+    Program = newline* Statement newline*
+    Statement = SimpleStatement endline | 
+    SimpleStatement = "fuzz" Ids "=" Exps   -- vardecl
+                    | VarExps "=" Exps      -- assign
+                    | Call                  -- Call
+                    | "chill"               -- break
+                    | "returnt" Exp?        -- return
+                    
+                    
+    Exp =  Exp "or" Exp1                    -- or
+         | Exp "and" Exp1                   -- and
+         | Exp1
+    Exp1 = Exp2 relop Exp2                  -- binary
+         | Exp2
+    Exp2 = Exp2 addop Exp3                  -- binary
+         | Exp3
+    Exp3 = Exp3 mulop Exp4                  -- binary
+         | Exp4
+    Exp4 = "!" Exp4                         -- not
+         | Exp5
+    Exp5 = prefixop Exp6                    -- unary
+         | Exp6
+    Exp6 = boollit
+         | numlit
+         | strlit
+         | "[" ListOf<Exp, ","> "]"         -- list
+         | Call
+         | VarExp
+         | "(" Exp ")"               
+
+    VarExp = VarExp = VarExp "[" Exp "]"    -- subscript
+           | Ids
+    VarExps = NonemptyListOf<VarExp, ",">
+    Call = VarExp "(" parameter ")"
+    parameter = type Ids
+    type = "boolean" | "string" | "integer" | "float" | "None" | "list" | "set"
+    numlit = digit+ ("." digit+)?
+    boollit = "cozy" | "not_cozy"
+    strlit = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
+    Exps = NonemptyListOf<Exp, ",">
+
+    keyword = ("fuzz" | "phor" | "iph" | "elz" | "cozy" | "not_cozy" | "returnt"
+            |  "chill") ~idrest
+
+    addop = "+" | "-"
+    mulop = "*" | "/"
+    endline = "!"
+    newline = "\n"+
+    comment = "yoo!" (~"\n" any)*
+}
