@@ -1,6 +1,12 @@
 Fuzz {
     Program = newline* Statement newline*
-    Statement = SimpleStatement endline | 
+    
+    Statement = SimpleStatement endline
+              | "while" Exp                 --while
+              | "iph" Exp 
+               ("iph elz" Exp)*
+               ("elz" Exp)?                 -- if/if else/else
+               
     SimpleStatement = "fuzz" Ids "=" Exps   -- vardecl
                     | VarExps "=" Exps      -- assign
                     | Call                  -- Call
@@ -11,41 +17,45 @@ Fuzz {
     Exp =  Exp "or" Exp1                    -- or
          | Exp "and" Exp1                   -- and
          | Exp1
-    Exp1 = Exp2 relop Exp2                  -- binary
+    Exp1 = Exp2 relop Exp2                  -- binary greater/less/equal
          | Exp2
-    Exp2 = Exp2 addop Exp3                  -- binary
+    Exp2 = Exp2 addop Exp3                  -- binary, add/sub
          | Exp3
-    Exp3 = Exp3 mulop Exp4                  -- binary
+    Exp3 = Exp3 mulop Exp4                  -- binary, mult/div/expon
          | Exp4
-    Exp4 = "!" Exp4                         -- not
+    Exp4 = prefixop Exp5                    -- unary, not/negate
          | Exp5
-    Exp5 = prefixop Exp6                    -- unary
-         | Exp6
-    Exp6 = boollit
+    Exp5 = boollit
          | numlit
          | strlit
          | "[" ListOf<Exp, ","> "]"         -- list
          | Call
-         | VarExp
          | "(" Exp ")"               
 
-    VarExp = VarExp = VarExp "[" Exp "]"    -- subscript
-           | Ids
+    Exps    = NonemptyListOf<Exp, ","> 
+    Call    = VarExp "(" parameter ")"
+            | VarExp
+    VarExp  = VarExp "[" Exp "]"             -- subscript
+            | Ids
     VarExps = NonemptyListOf<VarExp, ",">
-    Call = VarExp "(" parameter ")"
-    parameter = type Ids
-    type = "boolean" | "string" | "integer" | "float" | "None" | "list" | "set"
-    numlit = digit+ ("." digit+)?
-    boollit = "cozy" | "not_cozy"
-    strlit = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
-    Exps = NonemptyListOf<Exp, ",">
 
-    keyword = ("fuzz" | "phor" | "iph" | "elz" | "cozy" | "not_cozy" | "returnt"
-            |  "chill") ~idrest
+         
+    parameter = type Ids ("=" parameter)?
+    type      = "boolean" | "string" | "integer" | "float" | "None" | "list" | "set"
+    numlit    = digit+ ("." digit+)?
+    boollit   = "cozy" | "not_cozy"
+    strlit    = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
+    Exps      = NonemptyListOf<Exp, ",">
 
-    addop = "+" | "-"
-    mulop = "*" | "/"
-    endline = "!"
-    newline = "\n"+
-    comment = "yoo!" (~"\n" any)*
+    keyword   = ("fuzz" | "phor" | "iph" | "elz" | "cozy" | "not_cozy" | "while" 
+              | "not" |  "returnt" | "chill") ~idrest
+    id        =  ~keyword ("_" | letter) idrest*
+    idrest    =  "_" | alnum
+    relop     =  "<=" | "<" | "==" | "not=" | ">=" | ">"
+    addop     = "+" | "-"
+    mulop     = "*" | "/" | "**"
+    prefixop  = "not" | "-"
+    endline   = "!"
+    newline   = "\n"+
+    comment   = "yoo!" (~"\n" any)*
 }
