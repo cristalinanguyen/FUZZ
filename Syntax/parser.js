@@ -18,7 +18,6 @@ const ReturntStatement = require('../ast/returnt-statement');
 const PhorStatement = require('../ast/phor-statement');
 const IphStatement = require('../ast/iph-statement');
 const ListExpression = require('../ast/list');
-const ListTypeExpression = require('../ast/list-type');
 const TypeDeclaration = require('../ast/type-declaration');
 const IdentifierExpression = require('../ast/identifier-expression');
 
