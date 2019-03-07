@@ -13,7 +13,7 @@ const BinaryExpression = require('../ast/binary-expression');
 const UnaryExpression = require('../ast/unary-expression');
 const FunctionCall = require('../ast/function-call');
 const FunctionDeclaration = require('../ast/function-declaration');
-const ReturntStatement = require('../ast/returnt');
+const ReturntStatement = require('../ast/returnt-statement');
 const PhorStatement = require('../ast/phor-statement');
 const Case = require('../ast/case');
 const IphStatement = require('../ast/iph-statement');
@@ -38,7 +38,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Statement_declaration(simple-statement, _) { return simple-statement.ast(); },
   Statement_assignment(simple-statement, _) { return simple-statement.ast(); },
   Statement_typedec(simple-statement, _) { return simple-statement.ast(); },
-  Statement_returnt(returntStmt, _) { return returntStmt.ast(); },
+  Statement_returnt(ReturntStatement, _) { return ReturntStatement.ast(); },
   Statement_chill(_1, _2) { return new ChillStatement(); },
   Statement_expression(simple-statement, _) { return simple-statement.ast(); },
   Declaration(ids, _, exps) { return new VarDec(ids.ast(), exps.ast()); },
