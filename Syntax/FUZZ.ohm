@@ -41,7 +41,6 @@ Fuzz {
 
          
     parameter = type Ids ("=" parameter)?
-    type      = "boolean" | "string" | "integer" | "float" | "None" | "list" | "set"
     numlit    = digit+ ("." digit+)?
     boollit   = "cozy" | "not_cozy"
     strlit    = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
