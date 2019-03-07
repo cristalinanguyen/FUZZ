@@ -32,7 +32,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Conditional() {
     const tests = [];
     const bodies = [];
-    return new IphStatement(cases, unpack();
+    return new IphStatement(tests, bodies, unpack();
   },
   Statement_declaration(simple-statement, _) { return simple-statement.ast(); },
   Statement_assignment(simple-statement, _) { return simple-statement.ast(); },
