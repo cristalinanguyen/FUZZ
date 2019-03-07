@@ -3,6 +3,7 @@ const fs = require('fs');
 const withIndentsAndDedents = require('./preparser.js');
 
 const Program = require('../ast/program');
+const VariableDeclaration = require('../ast/variable-declaration');
 const Statement = require('../ast/statement');
 const BooleanLiteral = require('../ast/boolean-literal');
 const NumericLiteral = require('../ast/numeric-literal');
