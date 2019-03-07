@@ -16,7 +16,6 @@ const FunctionCall = require('../ast/function-call');
 const FunctionDeclaration = require('../ast/function-declaration');
 const ReturntStatement = require('../ast/returnt-statement');
 const PhorStatement = require('../ast/phor-statement');
-const Case = require('../ast/case');
 const IphStatement = require('../ast/iph-statement');
 const ListExpression = require('../ast/list');
 const ListTypeExpression = require('../ast/list-type');
@@ -33,7 +32,6 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Conditional() {
     const tests = [];
     const bodies = [];
-    const cases = tests.map((test, index) => new Case(test, bodies[index]));
     return new IphStatement(cases, unpack();
   },
   Statement_declaration(simple-statement, _) { return simple-statement.ast(); },
@@ -49,7 +47,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   While(_1, exps, _2, simple-statement) { return new WhileStatement(exps.ast(), simple-statement.ast()); },
   TypeDec(_1, id, _2, sumType) { return new TypeDeclaration(id.ast(), sumType.ast()); },
-  Returnt(_, e) { return new Returnt(e.ast()); },
+  Returnt(_, e) { return new ReturntStatement(e.ast()); },
   FuncDec(annotation, _1, signature, _2, simple-statement) {
     return new FunctionDeclaration(annotation.ast(), signature.ast(), suite.ast());
   },
