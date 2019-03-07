@@ -53,7 +53,7 @@ Fuzz {
     idrest    =  "_" | alnum
     relop     =  "<=" | "<" | "==" | "not=" | ">=" | ">"
     addop     = "+" | "-"
-    mulop     = "*" | "/" | "**"
+    mulop     = "**" | "/" | "*"
     prefixop  = "not" | "-"
     endline   = "!"
     newline   = "\n"+
