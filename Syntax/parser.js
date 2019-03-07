@@ -1,6 +1,6 @@
 const ohm = require('ohm-js');
 const fs = require('fs');
-const withIndents = require('./preparser.js');
+const withIndentsAndDedents = require('./preparser.js');
 
 const Program = require('../ast/program');
 const Statement = require('../ast/statement');
@@ -79,7 +79,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
 });
 
 module.exports = (text) => {
-  const match = grammar.match(withIndents(text));
+  const match = grammar.match(withIndentsAndDedents(text));
   if (!match.succeeded()) {
     throw match.message;
   }
