@@ -38,6 +38,8 @@ Fuzz {
     VarExp  = VarExp "[" Exp "]"             -- subscript
             | Ids
     VarExps = NonemptyListOf<VarExp, ",">
+    Ids         =  NonemptyListOf<id, ",">
+
 
          
     parameter = type Ids ("=" parameter)?
