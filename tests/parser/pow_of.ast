@@ -9,7 +9,10 @@ Program {
                     test: [ BinaryExpression {
                         op: '<',
                         left: IdentifierExpression { id: 'i' },
-                        right: IdentifierExpression { id: 'exponent' }}],
+                        right: [ BinaryExpression {
+                                    op: '-',
+                                    left: IdentifierExpression { id: 'exponent' },
+                                    right: NumericLiteral { value: 1 }}]}],
                     body: [ [ AssignmentStatement {
                                 target: IdentifierExpression { id: 'base' },
                                 source: [ BinaryExpression {
