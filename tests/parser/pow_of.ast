@@ -1,0 +1,25 @@
+Program {
+    [ FunctionDeclaration {
+        id: 'pow_of',
+        params: [ [ Parameter { id: 'base', type: 'num' }],
+                  [ Parameter { id: exponent, type: 'num'}]],
+        body:
+            [ [ VariableDeclaration { id: 'i', initializer: NumericLiteral { value: 0 }}],
+              [ WhileStatement {
+                    test: [ BinaryExpression {
+                        op: '<',
+                        left: IdentifierExpression { id: 'i' },
+                        right: IdentifierExpression { id: 'exponent' }}],
+                    body: [ [ AssignmentStatement {
+                                target: IdentifierExpression { id: 'base' },
+                                source: [ BinaryExpression {
+                                            op: '*',
+                                            left: IdentifierExpression { id: 'base' },
+                                            right: IdentifierExpression { id: 'base' }}],
+                            [ AssignmentStatement {
+                                target: IdentifierExpression { id: 'i' },
+                                source: [ BinaryExpression {
+                                            op: '+',
+                                            left: IdentifierExpression { id: 'i' },
+                                            right: NumericLiteral { 1 }}]}]}]]}],
+              [ ReturntStatement { returnValue: IdentifierExpression { id: 'base' }}]]}
