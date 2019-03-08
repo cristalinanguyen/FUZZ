@@ -7,7 +7,7 @@
 
 const util = require('util');
 const fs = require('fs');
-const parse = require('../../syntax/parser');
+const parse = require('../../Syntax/parser');
 
 describe('The parser', () => {
   fs.readdirSync(__dirname).forEach((name) => {
