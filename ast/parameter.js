@@ -1,5 +1,5 @@
 module.exports = class Parameter {
-  constructor(id, defaultExpression) {
-    Object.assign(this, { id, defaultExpression });
+  constructor(id, type) {
+    Object.assign(this, { id, type });
   }
 }
