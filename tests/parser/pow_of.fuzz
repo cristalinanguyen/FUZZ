@@ -1,6 +1,6 @@
 function pow_of(num base, num exponent) ~
     fuzz i = 0;
-    while (i < exponent) ~
+    while (i < (exponent - 1)) ~
         base = base * base;
         i = i + 1;
     ~
