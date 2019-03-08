@@ -29,12 +29,11 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
 ```
-fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot"!
-fuzz num_of_juuls_chris_has_lost = 27!
-fuzz meels_favorite_snack = "hot cheetos"!
-fuzz dondi_wears_airpods = cozy!
+fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot";
+fuzz num_of_juuls_chris_has_lost = 27;
+fuzz meels_favorite_snack = "hot cheetos";
+fuzz dondi_wears_airpods = cozy;
 ```
-Notice that every line ends in an exclamation mark, `!`, and that is because cozy coding is just so much fun!
 
 ### Function Declarations
 
@@ -42,28 +41,28 @@ The tilde (~) is used to enclose method bodies, as well as group statements in '
 
 ```
 function dondi_wearing_airpods()~
-  returnt cozy!
+  returnt cozy;
 ~
 
 function bjohnson()~
-  returnt "squirrel!"!
+  returnt "squirrel!";
 ~
 
 function mins_forney_spends_erasing(int classes)~
-  fuzz time = 8 * classes!
-  returnt time!
+  fuzz time = 8 * classes;
+  returnt time;
 ~
 
 function toal_playing_vball(boolean weather)~
   iph (weather)~
-    returnt cozy!
+    returnt cozy;
   ~ elz ~
-    returnt not_cozy!
+    returnt not_cozy;
   ~
 ~
 
 function dorin()~
-  returnt "among friends"!
+  returnt "among friends";
 ~
 ```
 
@@ -72,11 +71,11 @@ An `iph` statement executes the block of code inside the tildes `~`, if the spec
 
 ```
 iph (weather == 1)~
-  fuzzies_wearing_jackets = cozy!
+  fuzzies_wearing_jackets = cozy;
 ~ elz iph (weather == 0)~
-  fuzzies_wearing_jackets = not_cozy!
+  fuzzies_wearing_jackets = not_cozy;
 ~ elz ~
-  return "I dont know what the fuzzies are wearing today."!
+  return "I dont know what the fuzzies are wearing today.";
 ~
 ```
 
@@ -84,7 +83,7 @@ iph (weather == 1)~
 A `phor` statement executes the block of code inside the tildes `~` the number of times specified in the parentheses
 ```
 phor (fuzz i = 0; i < 100; i++)~
-  print "WE LOVE FUZZIES"!
+  print "WE LOVE FUZZIES";
 ~
 ```
 
@@ -98,31 +97,31 @@ yoo!
 
 ### Arithmetic
 ```
-fuzz sum = 2 + 4!
-fuzz difference = 4 - 2!
-fuzz product = 2 * 4!
-fuzz quotient = 4 / 2!
-fuzz exponent = 2 ** 4
+fuzz sum = 2 + 4;
+fuzz difference = 4 - 2;
+fuzz product = 2 * 4;
+fuzz quotient = 4 / 2;
+fuzz exponent = 2 ** 4;
 ```
 
 ### Data Structures
 #### Lists
 A list is an ordered sequence of elements of the same type.
 ```
-fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup']!
+fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup'];
 ```
 
 #### Dictionaries
 A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
 ```
-fuzz example = {'key': 'value'}!
-fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00}!
+fuzz example = {'key': 'value'};
+fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00};
 ```
 
 #### Sets
 A set is an unordered group of unique elements of the same type.
 ```
-fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'}!
+fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'};
 ```
 
 ### Expressions
