@@ -2,7 +2,7 @@ Program {
     statements:
     [ FunctionDeclaration {
         id: 'cmsi',
-        params: [ Param { id: 'professor', type: 'string' } ],
+        params: [ Parameter { id: 'professor', type: 'string' } ],
         body:
             [ IphStatement {
                 tests:
