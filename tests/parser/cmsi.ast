@@ -3,7 +3,6 @@ Program {
     [ FunctionDeclaration {
         id: 'cmsi',
         params: [ Param { id: 'professor', type: 'string' } ],
-        returnType: 'string',
         body:
             [ IphStatement {
                 tests:
