@@ -4,25 +4,23 @@ Program {
         params: [ [ Parameter { id: 'base', type: 'num' }],
                   [ Parameter { id: exponent, type: 'num'}]],
         body:
-            [ [ VariableDeclaration { id: 'i', initializer: NumericLiteral { value: 0 }}],
+            [ [ VariableDeclaration { id: 'result', initializer: NumericLiteral { value: 1 }}],
+              [ VariableDeclaration { id: 'i', initializer: NumericLiteral { value: 0 }}],
               [ WhileStatement {
                     test: [ BinaryExpression {
                         op: '<',
                         left: IdentifierExpression { id: 'i' },
-                        right: [ BinaryExpression {
-                                    op: '-',
-                                    left: IdentifierExpression { id: 'exponent' },
-                                    right: NumericLiteral { value: 1 }}]}],
+                        right: IdentifierExpression { id: 'exponent' }}],
                     body: [ [ AssignmentStatement {
-                                target: IdentifierExpression { id: 'base' },
+                                target: IdentifierExpression { id: 'result' },
                                 source: [ BinaryExpression {
                                             op: '*',
-                                            left: IdentifierExpression { id: 'base' },
-                                            right: IdentifierExpression { id: 'base' }}],
+                                            left: IdentifierExpression { id: 'result' },
+                                            right: IdentifierExpression { id: 'base' }}]}],
                             [ AssignmentStatement {
                                 target: IdentifierExpression { id: 'i' },
                                 source: [ BinaryExpression {
                                             op: '+',
                                             left: IdentifierExpression { id: 'i' },
-                                            right: NumericLiteral { 1 }}]}]}]]}],
-              [ ReturntStatement { returnValue: IdentifierExpression { id: 'base' }}]]}
+                                            right: NumericLiteral { 1 }}]}]]}],
+              [ ReturntStatement { returnValue: IdentifierExpression { id: 'result' }}]]}]}
