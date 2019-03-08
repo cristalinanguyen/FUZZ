@@ -1,9 +1,9 @@
 function csmi(string professor) ~
     iph (professor == 'Toal') ~
-        returnt 'Compilers'!
+        returnt 'Compilers';
     ~ elz iph (professor == 'Dondi') ~
-        returnt 'Interaction'!
+        returnt 'Interaction';
     ~ elz ~
-        returnt 'We love Comp Sci'!
+        returnt 'We love Comp Sci';
     ~
 ~
