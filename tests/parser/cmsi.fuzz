@@ -3,5 +3,7 @@ string function csmi(string professor) ~
         returnt 'Compilers'!
     ~ elz iph (professor == 'Dondi') ~
         returnt 'Interaction'!
+    ~ elz ~
+        returnt 'We love Comp Sci'!
     ~
 ~
