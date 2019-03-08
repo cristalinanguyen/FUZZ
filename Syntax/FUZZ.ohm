@@ -56,7 +56,7 @@ Fuzz {
     addop     = "+" | "-"
     mulop     = "**" | "/" | "*"
     prefixop  = "not" | "-"
-    endline   = "!"
+    endline   = ";"
     newline   = "\n"+
     comment   = "yoo!" (~"\n" any)*
 }
