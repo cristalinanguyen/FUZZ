@@ -1,0 +1,7 @@
+string function csmi(string professor) ~
+    iph (professor == 'Toal') ~
+        returnt 'Compilers'!
+    ~ elz iph (professor == 'Dondi') ~
+        returnt 'Interaction'!
+    ~
+~
