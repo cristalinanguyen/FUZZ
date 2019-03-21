@@ -1,5 +1,5 @@
 Fuzz {
-    Program = newline* Statement newline*
+    Program = newline* Statement+ newline*
     
     Statement = SimpleStatement endline
               | "while" Exp                 --while
