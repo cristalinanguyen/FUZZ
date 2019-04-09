@@ -51,7 +51,7 @@ Fuzz {
     keyword   = ("fuzz" | "phor" | "iph" | "elz" | "cozy" | "not_cozy" | "while" 
               | "not" |  "returnt" | "chill") ~idrest
     id        =  ~keyword ("_" | letter) idrest*
-    idrest    =  "_" | alnum
+    idrest    =  "_" | digit | letter
     relop     =  "<=" | "<" | "==" | "not=" | ">=" | ">"
     addop     = "+" | "-"
     mulop     = "**" | "/" | "*"
