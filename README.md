@@ -63,7 +63,7 @@ function dorin()~
 ```
 
 ### `iph` Statements
-An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
+An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `elz iph` statements and an optional `elz` statement which execute when the condition is false
 
 ```
 iph weather == 1 ~
