@@ -33,41 +33,45 @@ fuzz dondi_wears_airpods = cozy
 
 ### Function Declarations
 
-The tilde (~) is used to denote method bodies, as well as group statements in 'iph' statements and 'while' loops.
+The tilde (~) is used to enclose method bodies, as well as group statements in 'iph' statements and 'while' loops.
 
 ```
 function dondi_wearing_airpods()~
   returnt cozy
+~
 
 function bjohnson()~
   returnt "squirrel!"
+~
 
 function mins_forney_spends_erasing(int classes)~
   fuzz time = 8 * classes
   returnt time
+~  
 
 function toal_playing_vball(boolean weather)~
   iph (weather)~
     returnt cozy
+~    
   elz ~
     returnt not_cozy
-
+~
 
 function dorin()~
   returnt "among friends"
-
+~
 ```
 
 ### `iph` Statements
-An `iph` statement executes the block of code after the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
+An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
 
 ```
-iph weather == 1~
-  fuzzies_wearing_jackets = cozy
+iph weather == 1 ~
+  fuzzies_wearing_jackets = cozy ~
   elz iph weather == 0 ~
-  fuzzies_wearing_jackets = not_cozy
+  fuzzies_wearing_jackets = not_cozy ~
   elz ~
-  return "I dont know what the fuzzies are wearing today."
+  return "I dont know what the fuzzies are wearing today." ~
 
 ```
 
