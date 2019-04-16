@@ -1,8 +1,8 @@
 FUZZ {
   Statement    = Body
   Body         = "iph" Exps "~" Exps "~"
-                 ("elz iph" Exps "~" Exps "~")?
-                 ("elz" (Exps)? "~")?                      -- if
+                 (("elz iph" Exps "~" Exps "~")*)?
+                 ("elz" "~" Exps "~")?                  -- if
                | "while" Exps "~" Exps                  -- while
                | "chill"                                -- break
                | Call
