@@ -5,6 +5,7 @@ FUZZ {
                | "chill"                                -- break
                | Call
                | VarDec
+               | FuncDec
                | Exp1
   Exps         = ListOf<Body, ",">
   Exp1         = Exp2 relop Exp2                        -- binary
@@ -22,8 +23,9 @@ FUZZ {
   Array        = typeId "=" "[" Body ("," Body)* "]"
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
+  FuncDec      = "function" id (typeId)? "(" ")" "~" Body*
   keyword      = ("array" | "chill" | "iph" | "elz" |
-                  "var" | "while" | "print") ~idrest
+                  "fuzz" | "function" | "while" | "print") ~idrest
   typeId       = id           
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
