@@ -1,62 +1,40 @@
 Fuzz {
-    Program = newline* Statement+ newline*
-    
-    Statement = SimpleStatement endline
-              | "while" Exp                 --while
-              | "iph" Exp 
-               ("iph elz" Exp)*
-               ("elz" Exp)?                 -- if/if else/else
-               
-    SimpleStatement = "fuzz" Ids "=" Exps   -- vardecl
-                    | VarExps "=" Exps      -- assign
-                    | Call                  -- Call
-                    | "chill"               -- break
-                    | "returnt" Exp?        -- return
-                    
-                    
-    Exp =  Exp "or" Exp1                    -- or
-         | Exp "and" Exp1                   -- and
-         | Exp1
-    Exp1 = Exp2 relop Exp2                  -- binary greater/less/equal
-         | Exp2
-    Exp2 = Exp2 addop Exp3                  -- binary, add/sub
-         | Exp3
-    Exp3 = Exp3 mulop Exp4                  -- binary, mult/div/expon
-         | Exp4
-    Exp4 = prefixop Exp5                    -- unary, not/negate
-         | Exp5
-    Exp5 = boollit
-         | numlit
-         | strlit
-         | "[" ListOf<Exp, ","> "]"         -- list
-         | Call
-         | "(" Exp ")"               
-
-    Exps    = NonemptyListOf<Exp, ","> 
-    Call    = VarExp "(" parameter ")"
-            | VarExp
-    VarExp  = VarExp "[" Exp "]"             -- subscript
-            | Ids
-    VarExps = NonemptyListOf<VarExp, ",">
-    Ids         =  NonemptyListOf<id, ",">
-
-
-         
-    parameter = type Ids ("=" parameter)?
-    numlit    = digit+ ("." digit+)?
-    boollit   = "cozy" | "not_cozy"
-    strlit    = "\"" (~"\\" ~"\"" ~"\n" ~"\'" ~"\t" any)* "\""
-    Exps      = NonemptyListOf<Exp, ",">
-
-    keyword   = ("fuzz" | "phor" | "iph" | "elz" | "cozy" | "not_cozy" | "while" 
-              | "not" |  "returnt" | "chill") ~idrest
-    id        =  ~keyword idrest*
-    idrest    =  "_" | digit | letter
-    relop     =  "<=" | "<" | "==" | "not=" | ">=" | ">"
-    addop     = "+" | "-"
-    mulop     = "**" | "/" | "*"
-    prefixop  = "not" | "-"
-    endline   = ";"
-    newline   = "\n"+
-    comment   = "yoo!" (~"\n" any)*
+  Statement    = Body
+  Body         = "iph" Exps "~" Exps ("elz" Exps)?      -- if
+               | "while" Exps "~" Exps                  -- while
+               | "chill"                                -- break
+               | Call
+               | Exp3
+  Exps         = ListOf<Body, ",">
+  Exp3         = Exp4 relop Exp4                        -- binary
+               | Exp4
+  Exp4         = Exp4 addop Exp5                        -- binary
+               | Exp5
+  Exp5         = Exp5 mulop Exp6                        -- binary
+               | Exp6
+  Exp6         = prefixop Exp7                          -- negation
+               | Exp7
+  Exp7         = Call | Array | Literal | id        
+  Literal      = numlit
+               | strlit
+               | boollit
+               | "nil"                                  -- nil
+  Array        = typeId "=" "[" Body ("," Body)* "]"
+  Call         = id "(" ListOf<Body, ","> ")"
+  keyword      = ("array" | "chill" | "iph" | "elz" |
+                  "nil" | "var" | "while") ~idrest
+  typeId       = id           
+  id           = ~keyword letter idrest*
+  idrest       = letter | digit | "_"
+  numlit       = digit+ ("." digit+)?
+  boollit      = "cozy" | "not_cozy"
+  strlit       = "\"" char* "\""
+  char         = ~"\\" ~"\"" ~"\n" any | escape
+  escape       = "\\" ("\\" | "\"" | "n" | "t")
+  mulop        = "**"| "*" | "/"
+  addop        = "+" | "-"
+  relop        = "<="| "<" | ">=" | ">" | "not=" | "=" | "&" | "|"
+  prefixop     = "not" | "-"
+  space       := " " | "\t" | "\n" | comment
+  comment      = "yoo!" (~"yoo!" any)* "!!"
 }
