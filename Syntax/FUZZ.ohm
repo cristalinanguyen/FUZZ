@@ -16,15 +16,17 @@ FUZZ {
                | Exp4
   Exp4         = prefixop Exp5                          -- negation
                | Exp5
-  Exp5         = Call | Array | Literal | id        
+  Exp5         = Call | Array | Literal | Dict | Set| id        
   Literal      = numlit
                | strlit
                | boollit
-  Array        = typeId "=" "[" Body ("," Body)* "]"
+  Array        = "fuzzArr" typeId "=" "[" (Body)* ("," Body)* "]"
+  Dict         = "fuzzDict" typeId "=" "{" Body ":" Body "}"
+  Set          = "fuzzSet" typeId "=" "{" (Body)* ("," Body)* "}"
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
   FuncDec      = "function" id (typeId)? "(" id* ")" "~" Body*
-  keyword      = ("array" | "chill" | "iph" | "elz" |
+  keyword      = ( "chill" | "iph" | "elz" |
                   "fuzz" | "function" | "while" | "print") ~idrest
   typeId       = id           
   id           = ~keyword letter idrest*
