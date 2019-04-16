@@ -12,7 +12,7 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 - Statically Typed
 - Streams
 - Iph (if) Statements
-- Phor (for) Loops, While Loops
+- While Loops
 
 ## Examples
 
@@ -20,11 +20,7 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 - boolean: `cozy` and `not_cozy`
 - string: `"my UGGs are soooo comfortable"`
 - numbers: `1`, `100`, `420`,`1.5`, `3.14`, `70.34799`
-- None: `None`
-- list: `[5, 6, 7, 8, 9, 10]`, `[["compilers", "operating systems"], ["interaction design", "plang", "theory"]]`
-- dictionary: `{"UGGs": cozy, "jackets": cozy, "FUZZ++"": cozy, "lair food": not_cozy}`
-- set: `{1, 2, 95, 7}`
-
+- array: `[5, 6, 7, 8, 9, 10]`, `["compilers", "operating systems", "interaction design", "plang", "theory"]`
 
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
