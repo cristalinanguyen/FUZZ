@@ -62,9 +62,9 @@ function dorin()~
 An `iph` statement executes the block of code after the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
 
 ```
-iph (weather == 1)~
+iph weather == 1~
   fuzzies_wearing_jackets = cozy
-  elz iph (weather == 0)~
+  elz iph weather == 0 ~
   fuzzies_wearing_jackets = not_cozy
   elz ~
   return "I dont know what the fuzzies are wearing today."
@@ -100,7 +100,7 @@ A FUZZ++ expression is one of the following:
 - a string literal, delimited by single or double quotes (`'hi'`, or `"hi"`), containing any character except a newline, backslash, or quotes (these can be escaped as `\n`, `\\`, `\'`, and `\"`)
 - a variable reference
 - a function call
-- an infix expression with any of the following operators: `and`, `or`, `<`, `<=`, `==`, `not=`, `>=`, `>`, `+`, `-`, `*`, `/`
+- an infix expression with any of the following operators: `&`, `|`, `<`, `<=`, `==`, `not=`, `>=`, `>`, `+`, `-`, `**`, `*`, `/`
 
 ### Statements
 A FUZZ++ statement is one of the following:
