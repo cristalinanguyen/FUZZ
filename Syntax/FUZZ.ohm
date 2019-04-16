@@ -4,25 +4,24 @@ Fuzz {
                | "while" Exps "~" Exps                  -- while
                | "chill"                                -- break
                | Call
-               | Exp3
+               | Exp1
   Exps         = ListOf<Body, ",">
-  Exp3         = Exp4 relop Exp4                        -- binary
+  Exp1         = Exp2 relop Exp2                        -- binary
+               | Exp2
+  Exp2         = Exp2 addop Exp3                        -- binary
+               | Exp3
+  Exp3         = Exp3 mulop Exp4                        -- binary
                | Exp4
-  Exp4         = Exp4 addop Exp5                        -- binary
+  Exp4         = prefixop Exp5                          -- negation
                | Exp5
-  Exp5         = Exp5 mulop Exp6                        -- binary
-               | Exp6
-  Exp6         = prefixop Exp7                          -- negation
-               | Exp7
-  Exp7         = Call | Array | Literal | id        
+  Exp5         = Call | Array | Literal | id        
   Literal      = numlit
                | strlit
                | boollit
-               | "nil"                                  -- nil
   Array        = typeId "=" "[" Body ("," Body)* "]"
   Call         = id "(" ListOf<Body, ","> ")"
   keyword      = ("array" | "chill" | "iph" | "elz" |
-                  "nil" | "var" | "while") ~idrest
+                  "var" | "while") ~idrest
   typeId       = id           
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
