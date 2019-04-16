@@ -87,23 +87,23 @@ fuzz exponent = 2 ** 4
 ```
 
 ### Data Structures
-#### Lists
-A list is an ordered sequence of elements of the same type.
+#### Arrays
+An array is an ordered sequence of elements of the same type.
 ```
-fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup'];
+fuzz im_hungry = [spicy tuna roll, california roll, salmon sashimi, miso soup];
 ```
 
 #### Dictionaries
 A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
 ```
-fuzz example = {'key': 'value'};
-fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00};
+fuzz example = {key: value};
+fuzz vegan_food_prices = {vegan burger: 5.50, vegan chips: 2.99, vegan romaine lettuce: 4.00};
 ```
 
 #### Sets
 A set is an unordered group of unique elements of the same type.
 ```
-fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'};
+fuzz fuzzy_gang_gang = {phi phi, nini, meelz, lili, leanz, chrissykins};
 ```
 
 
