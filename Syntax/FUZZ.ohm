@@ -23,7 +23,7 @@ FUZZ {
   Array        = typeId "=" "[" Body ("," Body)* "]"
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
-  FuncDec      = "function" id (typeId)? "(" ")" "~" Body*
+  FuncDec      = "function" id (typeId)? "(" id* ")" "~" Body*
   keyword      = ("array" | "chill" | "iph" | "elz" |
                   "fuzz" | "function" | "while" | "print") ~idrest
   typeId       = id           
