@@ -23,7 +23,7 @@ FUZZ {
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
   keyword      = ("array" | "chill" | "iph" | "elz" |
-                  "var" | "while") ~idrest
+                  "var" | "while" | "print") ~idrest
   typeId       = id           
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
