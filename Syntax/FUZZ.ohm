@@ -1,9 +1,10 @@
-Fuzz {
+FUZZ {
   Statement    = Body
   Body         = "iph" Exps "~" Exps ("elz" Exps)?      -- if
                | "while" Exps "~" Exps                  -- while
                | "chill"                                -- break
                | Call
+               | VarDec
                | Exp1
   Exps         = ListOf<Body, ",">
   Exp1         = Exp2 relop Exp2                        -- binary
@@ -20,6 +21,7 @@ Fuzz {
                | boollit
   Array        = typeId "=" "[" Body ("," Body)* "]"
   Call         = id "(" ListOf<Body, ","> ")"
+  VarDec       = "fuzz" id (typeId)? "=" Body
   keyword      = ("array" | "chill" | "iph" | "elz" |
                   "var" | "while") ~idrest
   typeId       = id           
