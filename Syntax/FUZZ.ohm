@@ -1,6 +1,8 @@
 FUZZ {
   Statement    = Body
-  Body         = "iph" Exps "~" Exps ("elz" Exps)?      -- if
+  Body         = "iph" Exps "~" Exps "~"
+                 ("elz iph" Exps "~" Exps "~")?
+                 ("elz" (Exps)? "~")?                      -- if
                | "while" Exps "~" Exps                  -- while
                | "chill"                                -- break
                | Call
@@ -25,7 +27,7 @@ FUZZ {
   Set          = "fuzzSet" typeId "=" "{" (Body)* ("," Body)* "}"
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
-  FuncDec      = "function" id (typeId)? "(" id* ")" "~" Body*
+  FuncDec      = "function" id (typeId)? "(" id* ")" "~" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" |
                   "fuzz" | "function" | "while" | "print") ~idrest
   typeId       = id           
