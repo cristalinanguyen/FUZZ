@@ -25,79 +25,65 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
 ```
-fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot";
-fuzz num_of_juuls_chris_has_lost = 27;
-fuzz meels_favorite_snack = "hot cheetos";
-fuzz dondi_wears_airpods = cozy;
+fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot"
+fuzz num_of_juuls_chris_has_lost = 27
+fuzz meels_favorite_snack = "hot cheetos"
+fuzz dondi_wears_airpods = cozy
 ```
 
 ### Function Declarations
 
-The tilde (~) is used to enclose method bodies, as well as group statements in 'iph' statements and 'phor' loops.
+The tilde (~) is used to denote method bodies, as well as group statements in 'iph' statements and 'while' loops.
 
 ```
 function dondi_wearing_airpods()~
-  returnt cozy;
-~
+  returnt cozy
 
 function bjohnson()~
-  returnt "squirrel!";
-~
+  returnt "squirrel!"
 
 function mins_forney_spends_erasing(int classes)~
-  fuzz time = 8 * classes;
-  returnt time;
-~
+  fuzz time = 8 * classes
+  returnt time
 
 function toal_playing_vball(boolean weather)~
   iph (weather)~
-    returnt cozy;
-  ~ elz ~
-    returnt not_cozy;
-  ~
-~
+    returnt cozy
+  elz ~
+    returnt not_cozy
+
 
 function dorin()~
-  returnt "among friends";
-~
+  returnt "among friends"
+
 ```
 
 ### `iph` Statements
-An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
+An `iph` statement executes the block of code after the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `if elz` statements and an optional `elz` statement which execute when the condition is false
 
 ```
 iph (weather == 1)~
-  fuzzies_wearing_jackets = cozy;
-~ elz iph (weather == 0)~
-  fuzzies_wearing_jackets = not_cozy;
-~ elz ~
-  return "I dont know what the fuzzies are wearing today.";
-~
-```
+  fuzzies_wearing_jackets = cozy
+  elz iph (weather == 0)~
+  fuzzies_wearing_jackets = not_cozy
+  elz ~
+  return "I dont know what the fuzzies are wearing today."
 
-### `phor` Statements
-A `phor` statement executes the block of code inside the tildes `~` the number of times specified in the parentheses
-```
-phor (fuzz i = 0; i < 100; i++)~
-  print "WE LOVE FUZZIES";
-~
 ```
 
 ### Comments
 ```
-yoo! 
-yoo! the Keckmas party was banging
-yoo!
+yoo! the Keckmas party was banging !!
 
 ```
 
 ### Arithmetic
 ```
-fuzz sum = 2 + 4;
-fuzz difference = 4 - 2;
-fuzz product = 2 * 4;
-fuzz quotient = 4 / 2;
-fuzz exponent = 2 ** 4;
+fuzz sum = 2 + 4
+fuzz difference = 4 - 2
+fuzz product = 2 * 4
+fuzz quotient = 4 / 2
+fuzz exponent = 2 ** 4
 ```
 
 ### Data Structures
@@ -107,19 +93,6 @@ A list is an ordered sequence of elements of the same type.
 fuzz im_hungry = ['spicy tuna roll', 'california roll', 'salmon sashimi', 'miso soup'];
 ```
 
-#### Dictionaries
-A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
-```
-fuzz example = {'key': 'value'};
-fuzz vegan_food_prices = {'vegan burger': 5.50, 'vegan chips': 2.99, 'vegan romaine lettuce': 4.00};
-```
-
-#### Sets
-A set is an unordered group of unique elements of the same type.
-```
-fuzz fuzzy_gang_gang = {'phi phi', 'nini', 'meelz', 'lili', 'leanz', 'chrissykins'};
-```
-
 ### Expressions
 A FUZZ++ expression is one of the following:
 - a boolean literal: `cozy` or `not_cozy`
@@ -127,7 +100,7 @@ A FUZZ++ expression is one of the following:
 - a string literal, delimited by single or double quotes (`'hi'`, or `"hi"`), containing any character except a newline, backslash, or quotes (these can be escaped as `\n`, `\\`, `\'`, and `\"`)
 - a variable reference
 - a function call
-- an infix expression with any of the following operators: `and`, `or`, `<`, `<=`, `==`, `NOT=`, `>=`, `>`, `+`, `-`, `*`, `/`
+- an infix expression with any of the following operators: `and`, `or`, `<`, `<=`, `==`, `not=`, `>=`, `>`, `+`, `-`, `*`, `/`
 
 ### Statements
 A FUZZ++ statement is one of the following:
@@ -138,5 +111,4 @@ A FUZZ++ statement is one of the following:
 - a `chill` statement (must appear in a loop and tells the program to chill out with that loop, break out of it, and move on to the code after the loop)
 - a `returnt` statement (returns a value from a function; it is an error if `returnt` appears somewhere other than in a function body)
 - an `iph`, `iph elz`, or `elz` statement
-- a `phor` statement
 - a `print` statement
