@@ -24,30 +24,30 @@ const IdentifierExpression = require('../ast/identifier-expression');
 
 const grammar = ohm.grammar(fs.readFileSync('./syntax/FUZZ.ohm'));
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-  Program(_1, body, _2) { return new Program(simple-statement.ast()); },
+  Program(_1, body, _2) { return new Program(simpleStatement.ast()); },
   SimpleStatement(expressionsAndStatements) { return new Body(expressionsAndStatements.ast()); },
-  
+
   //CREATE TESTS
   Conditional() {
     const tests = [];
     const bodies = [];
-    return new IphStatement(tests, bodies, unpack();
+    return new IphStatement(tests, bodies, unpack());
   },
-  Statement_declaration(simple-statement, _) { return simple-statement.ast(); },
-  Statement_assignment(simple-statement, _) { return simple-statement.ast(); },
-  Statement_typedec(simple-statement, _) { return simple-statement.ast(); },
+  Statement_declaration(simpleStatement, _) { return simpleStatement.ast(); },
+  Statement_assignment(simpleStatement, _) { return simpleStatement.ast(); },
+  Statement_typedec(simpleStatement, _) { return simpleStatement.ast(); },
   Statement_returnt(ReturntStatement, _) { return ReturntStatement.ast(); },
   Statement_chill(_1, _2) { return new ChillStatement(); },
-  Statement_expression(simple-statement, _) { return simple-statement.ast(); },
+  Statement_expression(simpleStatement, _) { return simpleStatement.ast(); },
   Declaration(ids, _, exps) { return new VarDec(ids.ast(), exps.ast()); },
   Assignment(ids, _, exps) { return new VarAsgn(ids.ast(), exps.ast()); },
   Phor(_1, ids, _2, exps, _3, suite) {
     return new PhorStatement(ids.ast(), exps.ast(), suite.ast());
   },
-  While(_1, exps, _2, simple-statement) { return new WhileStatement(exps.ast(), simple-statement.ast()); },
+  While(_1, exps, _2, simpleStatement) { return new WhileStatement(exps.ast(), simpleStatement.ast()); },
   TypeDec(_1, id, _2, sumType) { return new TypeDeclaration(id.ast(), sumType.ast()); },
   Returnt(_, e) { return new ReturntStatement(e.ast()); },
-  FuncDec(annotation, _1, signature, _2, simple-statement) {
+  FuncDec(annotation, _1, signature, _2, simpleStatement) {
     return new FunctionDeclaration(annotation.ast(), signature.ast(), suite.ast());
   },
   Exp0_and(left, op, right) { return new BinaryExpression(op.ast(), left.ast(), right.ast()); },
