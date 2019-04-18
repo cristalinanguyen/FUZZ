@@ -1,15 +1,19 @@
 FUZZ {
-  Statement    = Body
-  Body         = "iph" Exps Exps "~"
-                 (("elz iph" Exps Exps "~")*)?
-                 ("elz" Exps "~")?                  -- if
+  Program      = Body
+  Body         = Statement+
+  Statement    = "iph" Exp Body
+                 ("elz iph" Exp Body)*
+                 ("elz" Exp)? "~"                  -- if
                | "while" Exps "~" Exps                  -- while
                | "chill"                                -- break
                | Call
                | VarDec
                | FuncDec
                | Exp1
-  Exps         = ListOf<Body, ",">
+  Assignment   = "fuzz" id "=" Exp
+  Exps         = ListOf<Exp, ",">
+  Exp          = Exp logop Exp1                         -- binary
+               | Exp1
   Exp1         = Exp2 relop Exp2                        -- binary
                | Exp2
   Exp2         = Exp2 addop Exp3                        -- binary
@@ -22,9 +26,10 @@ FUZZ {
   Literal      = numlit
                | strlit
                | boollit
-  Array        = "fuzzArr" typeId "=" "[" (Body)* ("," Body)* "]"
-  Dict         = "fuzzDict" typeId "=" "{" Body ":" Body "}"
-  Set          = "fuzzSet" typeId "=" "{" (Body)* ("," Body)* "}"
+  Array        = "fuzzArr" typeId "=" "["Exps"]"
+  Field        = id ":" Exp
+  Dict         = "fuzzDict" typeId "=" "{" ListOf<Field, ","> "}"
+  Set          = "fuzzSet" typeId "=" "{" ListOf<Exp> "}"
   Call         = id "(" ListOf<Body, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Body
   FuncDec      = "function" id (typeId)? "(" id* ")" Body* "~"
@@ -40,8 +45,9 @@ FUZZ {
   escape       = "\\" ("\\" | "\"" | "n" | "t")
   mulop        = "**"| "*" | "/"
   addop        = "+" | "-"
-  relop        = "<="| "<" | ">=" | ">" | "not=" | "=" | "&" | "|"
+  relop        = "<="| "<" | ">=" | ">" | "not=" | "==" 
   prefixop     = "not" | "-"
+  logop        = "&" | "|"
   space       := " " | "\t" | "\n" | comment
   comment      = "yoo!" (~"yoo!" any)* "!!"
 }
