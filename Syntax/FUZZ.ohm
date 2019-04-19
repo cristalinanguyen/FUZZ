@@ -1,40 +1,44 @@
 FUZZ {
   Program      = Body
   Body         = Statement+
-  Statement    = "iph" Exp Body
+  Statement    = Assignment
+               | "iph" Exp Body
                  ("elz iph" Exp Body)*
-                 ("elz" Exp)? "~"                  -- if
-               | "while" Exps "~" Exps                  -- while
-               | "chill"                                -- break
+                 ("elz" Body)? 
+                 "~"                              -- if
+               | "while" Exp Body "~"             -- while
+               | "chill"                          -- break
                | Call
                | VarDec
                | FuncDec
                | Exp1
-  Assignment   = "fuzz" id "=" Exp
+  Assignment   = Var "=" Exp
   Exps         = ListOf<Exp, ",">
-  Exp          = Exp logop Exp1                         -- binary
+  Exp          = Exp logop Exp1                   -- binary
                | Exp1
-  Exp1         = Exp2 relop Exp2                        -- binary
+  Exp1         = Exp2 relop Exp2                  -- binary
                | Exp2
-  Exp2         = Exp2 addop Exp3                        -- binary
+  Exp2         = Exp2 addop Exp3                  -- binary
                | Exp3
-  Exp3         = Exp3 mulop Exp4                        -- binary
+  Exp3         = Exp3 mulop Exp4                  -- binary
                | Exp4
-  Exp4         = prefixop Exp5                          -- negation
+  Exp4         = prefixop Exp5                    -- negation
                | Exp5
-  Exp5         = Call | Array | Literal | Dict | Set| id        
+  Exp5         = Call | Array | Literal | Dict | Set | Var
+  Var          = id
   Literal      = numlit
                | strlit
                | boollit
-  Array        = "fuzzArr" typeId "=" "["Exps"]"
+  Array        = "[" Exps "]"
   Field        = id ":" Exp
-  Dict         = "fuzzDict" typeId "=" "{" ListOf<Field, ","> "}"
-  Set          = "fuzzSet" typeId "=" "{" ListOf<Exp> "}"
-  Call         = id "(" ListOf<Body, ","> ")"
-  VarDec       = "fuzz" id (typeId)? "=" Body
+  Dict         = "{" ListOf<Field, ","> "}"
+  Set          = "{" ListOf<Exp, ","> "}"
+  Call         = id "(" ListOf<Exp, ","> ")"
+  VarDec       = "fuzz" id (typeId)? "=" Exp
   FuncDec      = "function" id (typeId)? "(" id* ")" Body* "~"
-  keyword      = ( "chill" | "iph" | "elz" |
-                  "fuzz" | "function" | "while" | "print") ~idrest
+  keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
+                  "fuzz" | "function" | "while" | "print" | "not" |
+                  "cozy" | "not_cozy") ~idrest
   typeId       = id           
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
@@ -45,9 +49,9 @@ FUZZ {
   escape       = "\\" ("\\" | "\"" | "n" | "t")
   mulop        = "**"| "*" | "/"
   addop        = "+" | "-"
-  relop        = "<="| "<" | ">=" | ">" | "not=" | "==" 
-  prefixop     = "not" | "-"
   logop        = "&" | "|"
+  relop        = "<="| "<" | ">=" | ">" | "not=" | "=="
+  prefixop     = "not" | "-"
   space       := " " | "\t" | "\n" | comment
   comment      = "yoo!" (~"yoo!" any)* "!!"
 }
