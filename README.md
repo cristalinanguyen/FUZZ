@@ -94,20 +94,20 @@ fuzz exponent = 2 ** 4
 #### Arrays
 An array is an ordered sequence of elements of the same type.
 ```
-fuzzArr im_hungry = [spicy tuna roll, california roll, salmon sashimi, miso soup];
+fuzzArr im_hungry = ["spicy tuna roll", "california roll", "salmon sashimi", "miso soup"];
 ```
 
 #### Dictionaries
 A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
 ```
 fuzzDict example = {key: value};
-fuzzDict vegan_food_prices = {vegan burger: 5.50, vegan chips: 2.99, vegan romaine lettuce: 4.00};
+fuzzDict vegan_food_prices = {"vegan burger": 5.50, "vegan chips": 2.99, "vegan romaine lettuce": 4.00};
 ```
 
 #### Sets
 A set is an unordered group of unique elements of the same type.
 ```
-fuzzSet fuzzy_gang_gang = {phi phi, nini, meelz, lili, leanz, chrissykins};
+fuzzSet fuzzy_gang_gang = {"phi phi", "nini", "meelz", "lili", "leanz", "chrissykins"};
 ```
 
 
