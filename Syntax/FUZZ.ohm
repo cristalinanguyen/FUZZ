@@ -2,8 +2,8 @@ FUZZ {
   Program      = Body
   Body         = Statement+
   Statement    = Assignment
-               | "iph" Exp Body
-                 ("elz iph" Exp Body)*
+               | "iph" Exp Body "~"
+                 ("elz iph" Exp Body "~")*
                  ("elz" Body)? 
                  "~"                              -- if
                | "while" Exp Body "~"             -- while
