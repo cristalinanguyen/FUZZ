@@ -7,6 +7,7 @@ FUZZ {
                  ("elz" Body)? 
                  "~"                              -- if
                | "while" Exp Body "~"             -- while
+               | Lvalue "=" Exp                   -- assign
                | "chill"                          -- break
                | Call
                | VarDec
@@ -24,11 +25,14 @@ FUZZ {
                | Exp4
   Exp4         = prefixop Exp5                    -- negation
                | Exp5
-  Exp5         = Call | Array | Literal | Dict | Set | Var
+  Exp5         = Call | Array | Literal | Dict | Set | Var | Lvalue
   Var          = id
   Literal      = numlit
                | strlit
                | boollit
+  Lvalue       = Lvalue "[" Exp "]"                 -- subscripted
+               | Lvalue "." id                      -- field
+               | id                                 -- id
   Array        = "[" Exps "]"
   Field        = id ":" Exp
   Dict         = "{" ListOf<Field, ","> "}"
