@@ -1,5 +1,5 @@
 {
-  "name": "fuzz",
+  "name": "FUZZ",
   "version": "1.0.0",
   "description": "Compiler Project for CMSI 488 at Loyola Marymount University by Liam Namba, Lina Nguyen, Christian Santander, Annie Flora, Amelia Jay, and Sophia Prochnow.",
   "dependencies": {
