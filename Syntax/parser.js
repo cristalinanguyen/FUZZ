@@ -7,7 +7,7 @@ const {
   TypeDec, Variable, WhileExp,
 } = require('../ast');
 
-const grammar = ohm.grammar(fs.readFileSync('../FUZZ.ohm'));
+const grammar = ohm.grammar(fs.readFileSync('Syntax/FUZZ.ohm'));
 
 // Ohm turns `x?` into either [x] or [], which we should clean up for our AST.
 function arrayToNullable(a) {
