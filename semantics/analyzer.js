@@ -1,5 +1,5 @@
 const {
-  ArrayExp, ArrayType, Assignment, BinaryExp, Call, Chill, Dict, Field,
+  ArrayExp, ArrayType, AssignmentStatement, BinaryExp, Call, Chill, Dict, Field,
   ForExp, Func, IdExp, IphExp, Literal, MemberExp, NegationExp, Param,
   SetExp, SetType, SubscriptedExp, TypeDec, Variable, WhileExp,
 } = require('../ast');
