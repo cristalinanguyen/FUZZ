@@ -1,7 +1,6 @@
 const fs = require('fs');
 const ohm = require('ohm-js');
 
-const Program = require('../ast/program');
 const VariableDeclaration = require('../ast/variable-declaration');
 const Statement = require('../ast/statement');
 const BooleanLiteral = require('../ast/boolean-literal');
