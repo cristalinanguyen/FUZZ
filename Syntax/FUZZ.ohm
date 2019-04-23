@@ -4,14 +4,14 @@ FUZZ {
   Statement    = Assignment
                | "iph" Exp Body "~"
                  ("elz iph" Exp Body "~")*
-                 ("elz" Body)? 
-                 "~"                              -- if
+                 ("elz" Body)?
+                 "~"                              -- iph
                | "while" Exp Body "~"             -- while
                | Lvalue "=" Exp                   -- assign
-               | "chill"                          -- break
+               | "chill"                          -- chill
                | Call
                | VarDec
-               | FuncDec
+               | FunDec
                | Exp1
   Assignment   = "fuzz" Var "=" Exp
   Exps         = ListOf<Exp, ",">
@@ -25,24 +25,28 @@ FUZZ {
                | Exp4
   Exp4         = prefixop Exp5                    -- negation
                | Exp5
-  Exp5         = Call | Array | Literal | Dict | Var | Lvalue
-  Var          = id
+  Exp5         = "(" Exp ")"                      -- parens
+               | Call
+               | Array
+               | Literal
+               | Dict
+               | Lvalue
   Literal      = numlit
                | strlit
                | boollit
-  Lvalue       = Lvalue "[" Exp "]"                 -- subscripted
-               | Lvalue "." id                      -- field
-               | id                                 -- id
+  Lvalue       = Lvalue "[" Exp "]"               -- subscripted
+               | Lvalue "." id                    -- field
+               | id                               -- id
   Array        = "[" Exps "]"
   Field        = id ":" Exp
   Dict         = "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
-  VarDec       = "fuzz" id (typeId)? "=" Exp
-  FuncDec      = "function" id (typeId)? "(" id* ")" Body* "~"
+  VarDec       = "fuzz" id "=" Exp
+  FunDec       = "function" id (typeId)? "(" id* ")" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
                   "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
-  typeId       = id           
+  typeId       = id
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
   numlit       = digit+ ("." digit+)?

@@ -16,33 +16,33 @@ function arrayToNullable(a) {
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-  Exp_iph(_1, test, _2, consequent, _3, alternate) {
+  Statement_iph(_1, test, _2, consequent, _3, alternate) {
     return new IphExp(test.ast(), consequent.ast(), arrayToNullable(alternate.ast()));
   },
-  Exp_while(_1, test, _2, body) {
+  Statement_while(_1, test, _2, body) {
     return new WhileExp(test.ast(), body.ast());
   },
-  Exp_assign(target, _1, source) {
+  Statement_assign(target, _1, source) {
     return new AssignmentStatement(target.ast(), source.ast());
   },
-  Exp_chill(_1) {
+  Statement_chill(_1) {
     return new Chill();
   },
   TypeDec(_1, id, _2, type) {
     return new TypeDec(id.ast(), type.ast());
   },
-  ArrayType(_1, _2, id) {
-    return new ArrayType(id.ast());
-  },
-//   confused
-  DictType(_1, fieldDecs, _2) {
-    return new DictType(fieldDecs.ast());
-  },
+//   ArrayType(_1, _2, id) {
+//     return new ArrayType(id.ast());
+//   },
+// //   confused
+//   DictType(_1, fieldDecs, _2) {
+//     return new DictType(fieldDecs.ast());
+//   },
   FunDec(_1, id, _2, params, _4, _5, typeid, _6, body) {
     return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
   },
-  VarDec(_1, id, _2, typeid, _3, init) {
-    return new Variable(id.ast(), arrayToNullable(typeid.ast()), init.ast());
+  VarDec(_1, id, _2, init) {
+    return new Variable(id.ast(), init.ast());
   },
   Field(id, _1, typeid) {
     return new Field(id.ast(), typeid.ast());
@@ -56,8 +56,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Exp3_binary(left, op, right) {
     return new BinaryExpression(op.ast(), left.ast(), right.ast());
   },
-  Exp4_binary(left, op, right) {
-    return new BinaryExpression(op.ast(), left.ast(), right.ast());
+  Exp4_negation(op, right) {
+    return new NegationExp(op.ast(), right.ast());
   },
   Exp5_binary(left, op, right) {
     return new BinaryExpression(op.ast(), left.ast(), right.ast());
