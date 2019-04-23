@@ -25,7 +25,7 @@ FUZZ {
                | Exp4
   Exp4         = prefixop Exp5                    -- negation
                | Exp5
-  Exp5         = Call | Array | Literal | Dict | Set | Var | Lvalue
+  Exp5         = Call | Array | Literal | Dict | Var | Lvalue
   Var          = id
   Literal      = numlit
                | strlit
@@ -36,7 +36,6 @@ FUZZ {
   Array        = "[" Exps "]"
   Field        = id ":" Exp
   Dict         = "{" ListOf<Field, ","> "}"
-  Set          = "{" ListOf<Exp, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
   VarDec       = "fuzz" id (typeId)? "=" Exp
   FuncDec      = "function" id (typeId)? "(" id* ")" Body* "~"
