@@ -13,8 +13,8 @@ module.exports = {
     doCheck(type.constructor === ArrayType, 'Not an array type');
   },
 
-  isSetType(type) {
-    doCheck(type.constructor === RecordType, 'Not a record type');
+  isDictType(type) {
+    doCheck(type.constructor === DictType, 'Not a record type');
   },
 
   // Is the type of this expression an array type?
@@ -22,8 +22,8 @@ module.exports = {
     doCheck(expression.type.constructor === ArrayType, 'Not an array');
   },
 
-  isSet(expression) {
-    doCheck(expression.type.constructor === RecordType, 'Not a record');
+  isDict(expression) {
+    doCheck(expression.type.constructor === DictType, 'Not a record');
   },
 
   isInteger(expression) {
@@ -57,8 +57,7 @@ module.exports = {
   // Can we assign expression to a variable/param/field of type type?
   isAssignableTo(expression, type) {
     doCheck(
-      (expression.type === NilType && type.constructor === RecordType)
-      || (expression.type === type),
+      (type.constructor === DictType) || (expression.type === type),
       `Expression of type ${util.format(expression.type)} not compatible with type ${util.format(type)}`,
     );
   },
