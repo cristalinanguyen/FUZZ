@@ -1,7 +1,7 @@
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExp, Call, Chill, Dict, Field,
+  ArrayExp, ArrayType, AssignmentStatement, BinaryExp, Call, Chill, DictType, DictExp, Field,
   ForExp, Func, IdExp, IphExp, Literal, MemberExp, NegationExp, Param,
-  SetExp, SetType, SubscriptedExp, TypeDec, Variable, WhileExp,
+  SubscriptedExp, TypeDec, Variable, WhileExp,
 } = require('../ast');
 
 const { IntType, StringType, BoolType } = require('./builtins');
@@ -128,9 +128,9 @@ NegationExp.prototype.analyze = function (context) {
   this.type = BoolType;
 };
 
-SetExp.prototype.analyze = function (context) {
+DictExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
-  check.isSetType(this.type);
+  check.isDictType(this.type);
   this.bindings.forEach((binding) => {
     const field = this.type.getFieldForId(binding.id);
     binding.analyze(context);
@@ -138,8 +138,8 @@ SetExp.prototype.analyze = function (context) {
   });
 };
 
-SetType.prototype.analyze = function (context) {
-  const usedFields = new Set();
+DictType.prototype.analyze = function (context) {
+  const usedFields = new Dict();
   this.fields.forEach((field) => {
     check.fieldHasNotBeenUsed(field.id, usedFields);
     usedFields.add(field.id);
@@ -147,7 +147,7 @@ SetType.prototype.analyze = function (context) {
   });
 };
 
-SetType.prototype.getFieldForId = function (id) {
+DictType.prototype.getFieldForId = function (id) {
   const field = this.fields.find(f => f.id === id);
   if (field === null) {
     throw new Error('No such field');
