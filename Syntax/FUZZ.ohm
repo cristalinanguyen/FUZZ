@@ -27,9 +27,9 @@ FUZZ {
                | Exp5
   Exp5         = "(" Exp ")"                      -- parens
                | Call
-               | Array
+               | ArrayExp
                | Literal
-               | Dict
+               | DictExp
                | Lvalue
   Literal      = numlit
                | strlit
@@ -37,14 +37,14 @@ FUZZ {
   Lvalue       = Lvalue "[" Exp "]"               -- subscripted
                | Lvalue "." id                    -- field
                | id                               -- id
-  Array        = "[" Exps "]"
+  ArrayExp     = "fuzzArr" id "=" "[" Exps "]"
   Field        = id ":" Exp
-  Dict         = "{" ListOf<Field, ","> "}"
+  DictExp      = "fuzzDict" id "=" "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
   VarDec       = "fuzz" id "=" Exp
   FunDec       = "function" id (typeId)? "(" id* ")" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
-                  "fuzz" | "function" | "while" | "print" | "not" |
+                  "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
   typeId       = id
   id           = ~keyword letter idrest*
