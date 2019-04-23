@@ -116,7 +116,7 @@ class WhileExp {
 }
 
 module.exports = {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, Dict, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SetExp, SetType, SubscriptedExp,
+  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, DictType, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
   TypeDec, Variable, WhileExp,
 };
