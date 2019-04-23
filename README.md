@@ -67,11 +67,11 @@ An `iph` statement executes the block of code inside the tildes `~`, if the spec
 
 ```
 iph weather == 1 ~
-  fuzzies_wearing_jackets = cozy ~
-  elz iph weather == 0 ~
-  fuzzies_wearing_jackets = not_cozy ~
-  elz ~
-  return "I dont know what the fuzzies are wearing today." ~
+fuzzies_wearing_jackets = cozy ~
+elz iph weather == 0 ~
+fuzzies_wearing_jackets = not_cozy ~
+elz ~
+return "I dont know what the fuzzies are wearing today." ~
 
 ```
 
