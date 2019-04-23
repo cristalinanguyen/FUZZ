@@ -5,7 +5,7 @@
  * static semantic errors.
  */
 
-const parse = require('../../../__tests__/parser');
+const parse = require('../../Syntax/parser');
 const Context = require('../context');
 
 const errors = [
