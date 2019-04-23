@@ -104,12 +104,6 @@ fuzzDict example = {key: value};
 fuzzDict vegan_food_prices = {"vegan burger": 5.50, "vegan chips": 2.99, "vegan romaine lettuce": 4.00};
 ```
 
-#### Sets
-A set is an unordered group of unique elements of the same type.
-```
-fuzzSet fuzzy_gang_gang = {"phi phi", "nini", "meelz", "lili", "leanz", "chrissykins"};
-```
-
 
 ### Expressions
 A FUZZ++ expression is one of the following:
