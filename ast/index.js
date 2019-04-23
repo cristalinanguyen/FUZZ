@@ -37,9 +37,15 @@ class Chill {
 }
 
 //HERE
-class Dict {
+class DictType {
   constructor(fields) {
     Object.assign(this, { fields });
+  }
+}
+
+class DictExp {
+  constructor(type, bindings) {
+    Object.assign(this, { type, bindings });
   }
 }
 
@@ -82,17 +88,6 @@ class MemberExp {
 class NegationExp {
   constructor(operand) {
     Object.assign(this, { operand });
-  }
-}
-class SetExp {
-  constructor(type, bindings) {
-    Object.assign(this, { type, bindings });
-  }
-}
-
-class SetType {
-  constructor(fields) {
-    Object.assign(this, { fields });
   }
 }
 
