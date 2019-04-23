@@ -10,7 +10,6 @@ FUZZ {
                | Lvalue "=" Exp                   -- assign
                | "chill"                          -- chill
                | Call
-               | VarDec
                | FunDec
                | Exp1
   Assignment   = "fuzz" typeId "=" Exp
@@ -41,7 +40,6 @@ FUZZ {
   Field        = id ":" Exp
   DictExp      = "fuzzDict" id "=" "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
-  VarDec       = "fuzz" id "=" Exp
   FunDec       = "function" id (typeId)? "(" id* ")" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
