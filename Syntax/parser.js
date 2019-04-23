@@ -2,7 +2,7 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, Dict, DictExp, DictType, Field,
+  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, DictType, Field,
   Func, IdExp, IphExp, Literal, MemberExp, NegationExp,  SubscriptedExp,
   TypeDec, Variable, WhileExp,
 } = require('../ast');
@@ -78,7 +78,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new ArrayExp(type.ast(), size.ast(), fill.ast());
   },
   DictExp(type, _1, bindings, _2) {
-    return new SetExp(type.ast(), bindings.ast());
+    return new DictExp(type.ast(), bindings.ast());
   },
   Call(callee, _1, args, _2) {
     return new Call(callee.ast(), args.ast());
