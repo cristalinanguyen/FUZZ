@@ -30,6 +30,9 @@ const errors = [
   ['incompatible array types', 'fuzzArr cmsi_classes = ["programing lab", 186, "interaction design", 370]'],
   ['incompatible dictionary key/value types', 'fuzzDict fuzz_gang = ["Liam": 21, "Chris": 21, "Lina": "youngest"]'],
   ['returnt statement outside of function body', 'function cozy_coding() ~ ~ returnt cozy'], 
+  ['incompatible assignment types', 'fuzz x = 10 fuzz drink = "chai" 10 = drink'],
+  ['define array as dictionary', 'fuzzArr jacket_colors = {"Annie": "black", "Amelia": "gray", "Lina": "pink"}'],
+  ['define dictionary as array', 'fuzzDict den = ["pumpkin muffin", "Kombucha", "cookie"]'], 
   
   // TODO: We need dozens more here....
 ];
