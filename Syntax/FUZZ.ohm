@@ -13,7 +13,7 @@ FUZZ {
                | VarDec
                | FunDec
                | Exp1
-  Assignment   = "fuzz" Var "=" Exp
+  Assignment   = "fuzz" typeId "=" Exp
   Exps         = ListOf<Exp, ",">
   Exp          = Exp logop Exp1                   -- binary
                | Exp1
