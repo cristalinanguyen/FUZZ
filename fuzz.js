@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
 /*
- * A Tiger Compiler
+ * A FUZZ++ Compiler - Code adapted from the Tiger Compiler (rtoal)
  *
- * This is a command line application that compiles a Tiger program from
+ * This is a command line application that compiles a FUZZ++ program from
  * a file. Synopsis:
  *
- * ./tiger.js -a <filename>
+ * ./fuzz.js -a <filename>
  *     writes out the AST and stops
  *
- * ./tiger.js -i <filename>
+ * ./fuzz.js -i <filename>
  *     writes the decorated AST then stops
  *
- * ./tiger.js <filename>
- *     compiles the tiger program to JavaScript, writing the generated
+ * ./fuzz.js <filename>
+ *     compiles the FUZZ++ program to JavaScript, writing the generated
  *     JavaScript code to standard output.
  *
- * ./tiger.js -o <filename>
+ * ./fuzz.js -o <filename>
  *     optimizes the intermediate code before generating target JavaScript.
  *
  * Output of the AST and decorated AST uses the object inspection functionality
@@ -28,7 +28,7 @@ const util = require('util');
 const yargs = require('yargs');
 const parse = require('./ast/parser');
 const Context = require('./semantics/context');
-const generateProgram = require('./backend/javascript-generator');
+// const generateProgram = require('./backend/javascript-generator');
 
 // If compiling from a string, return the AST, IR, or compiled code as a string.
 function compile(sourceCode, { astOnly, frontEndOnly, shouldOptimize }) {
