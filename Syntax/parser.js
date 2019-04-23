@@ -2,8 +2,8 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, Dict, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SetExp, SetType, SubscriptedExp,
+  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, Dict, DictExp, DictType, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, NegationExp,  SubscriptedExp,
   TypeDec, Variable, WhileExp,
 } = require('../ast');
 
@@ -35,8 +35,8 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new ArrayType(id.ast());
   },
 //   confused
-  SetType(_1, fieldDecs, _2) {
-    return new SetType(fieldDecs.ast());
+  DictType(_1, fieldDecs, _2) {
+    return new DictType(fieldDecs.ast());
   },
   FunDec(_1, id, _2, params, _4, _5, typeid, _6, body) {
     return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
@@ -77,7 +77,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   ArrayExp(type, _1, size, _2, _3, fill) {
     return new ArrayExp(type.ast(), size.ast(), fill.ast());
   },
-  SetExp(type, _1, bindings, _2) {
+  DictExp(type, _1, bindings, _2) {
     return new SetExp(type.ast(), bindings.ast());
   },
   Call(callee, _1, args, _2) {
