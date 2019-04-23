@@ -8,33 +8,54 @@
 const syntaxCheck = require('../syntax-checker');
 
 const program = String.raw`
-let
-  type Circle = {
-    x: int,
-    y: int,
-    color: string
-  }
-  function fib(n: int): int =
-    let
-      var a: int := 0
-      var b: int := 1
-      var t := 0  /* Tiger does not have parallel assignment */
-    in
-      while n > 0 do
-        (t := a; a := b; b := t + b; n := n - 1);
-      "abc$%π\n\\\u{41}";
-      a := if 1 then b := 1;
-      b := if 0 then 2 else let var x := 1 in x end;
-      b
-    end
-  var c: Circle := Circle {y = 2, x = 5<3&2<>1, color = "blue"}
-  type list = array of string
-  var dogs: list := list [3] of "woof"
-in
-  dogs[1] := "Sparky";
-  for i := 1 to 10 do
-    print(fib(i) & 0 | 1 + 0 * 1 - 0 / 1)
-end
+yoo! tests are so cool !
+
+fuzz x = 10
+fuzz y = 20
+fuzz z = 12.5
+
+fuzz test = "Fuzzies!"
+fuzz question = cozy
+fuzz bad = not_cozy
+
+fuzzArr strArr = ["a", "b", "c"]
+fuzzArr numArr = [0, 1, 2, 3]
+
+fuzzDict testDict = ["Op Systems": 5.45, "Compilers": 2.40, "Graphics: 9,40]
+
+function dondi() 
+  x = 12
+  y = 2
+  returnt x
+~
+
+iph (x >= y) 
+  print ("Hi there /n")
+~
+
+iph (x <= y)
+  print ("Wrong")
+~
+elz iph (x == y)
+  print ("Nope /t")
+~
+elz
+  print ("WOOHOO!")
+
+iph (bad)
+  fuzz q = x * 3
+  fuzz w = y / 10
+  fuzz v = x ** 3
+~
+elz
+  fuzz r = x + y
+~
+
+while (question)
+  x = x - 4
+  iph (x == 0)
+    chill
+  ~
 `;
 
 describe('The syntax checker', () => {
