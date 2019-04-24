@@ -90,6 +90,12 @@ class NegationExp {
   }
 }
 
+class PrimitiveType {
+  constructor(name) {
+    Object.assign(this, { name });
+  }
+}
+
 class SubscriptedExp {
   constructor(array, subscript) {
     Object.assign(this, { array, subscript });
