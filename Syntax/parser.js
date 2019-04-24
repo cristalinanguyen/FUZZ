@@ -38,7 +38,7 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
     return new DictType(type1.ast(), type2.ast());
   },
   FunDec(_1, id1, typeid, _2, type1, id2, _4, type2, id3, _5, body, _6) {
-    return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
+    return new Func(id1.ast(), arrayToNullable(typeid.ast()), type1.ast(), id2.ast(), type2.ast(), id3.ast(), body.ast());
   },
   Field(id, _1, typeid) {
     return new Field(id.ast(), typeid.ast());
