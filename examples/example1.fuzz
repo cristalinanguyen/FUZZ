@@ -1,0 +1,39 @@
+fuzz num group_size = 5
+fuzz str s = "A"
+fuzz str t = "A"
+fuzz bool nice = Cozy
+
+fuzz Arr<str> things = ["blanket", "soup", "mahjongg"]
+
+things[2]
+
+fuzz Dict<num> colors = { green: 200, blue: 50 }
+
+colors.blue
+colors.green
+
+
+cuddle(str s, str t)
+size(str s)
+show(str s)   -- print
+
+yoo!
+heres the thing: This is cozy!!
+fuzz str greeting = "Hello, "
+fuzz str friend = "world"
+show(cuddle(greeting, friend))
+
+
+
+x = y
+x = 3
+x[5] = 100 * 3
+x.p = 807
+fuzzy = 55
+
+
+
+
+
+
+

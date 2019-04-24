@@ -1,5 +1,5 @@
 FUZZ {
-  Program      = Body
+  Program      = "yoo!" Body
   Body         = Statement+
   Statement    = VarDec
                | "iph" Exp Body "~"
@@ -46,7 +46,7 @@ FUZZ {
   DictExp      = "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
   FunDec       = "function" id (typeId)? "(" ListOf<Param, ","> ")" Body* "~"
-  Param        = PrimType id
+  Param        = Type id
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
@@ -64,5 +64,5 @@ FUZZ {
   relop        = "<="| "<" | ">=" | ">" | "not=" | "=="
   prefixop     = "not" | "-"
   space       := " " | "\t" | "\n" | comment
-  comment      = "yoo!" (~"yoo!" any)* "!!"
+  comment      = "heres the thing:" (~"heres the thing:" any)* "!!"
 }
