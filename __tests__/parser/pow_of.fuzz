@@ -1,9 +1,9 @@
 function pow_of(num base, num exponent)
-    fuzz num result = 1;
-    fuzz num i = 0;
+    fuzz num result = 1
+    fuzz num i = 0
     while (i < exponent)
-        result = result * base;
-        i = i + 1;
+        result = result * base
+        i = i + 1
     ~
-    returnt result;
+    returnt result
 ~
