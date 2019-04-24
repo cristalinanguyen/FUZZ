@@ -1,6 +1,6 @@
 function csmi(str professor)
     iph (professor == "Toal")
-        returnt "Compilers";
+        returnt "Compilers"
     ~ elz iph (professor == "Dondi")
         returnt "Interaction"
     ~ elz
