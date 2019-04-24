@@ -37,8 +37,7 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   DictType(_1, type1, _2, type2, _3) {
     return new DictType(type1.ast(), type2.ast());
   },
-  //  FunDec       = "function" id (typeId)? "(" (TypeDec id ("," TypeDec id)*)* ")" Body* "~"
-  FunDec(_1, id1, typeid, _2, type1, id2, _4, type2, id3, _5, body _6) {
+  FunDec(_1, id1, typeid, _2, type1, id2, _4, type2, id3, _5, body, _6) {
     return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
   },
   Field(id, _1, typeid) {
