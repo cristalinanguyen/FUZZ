@@ -10,18 +10,17 @@ const syntaxCheck = require('../syntax-checker');
 const program = String.raw`
 yoo! tests are so cool !
 
-fuzz x = 10
-fuzz y = 20
-fuzz z = 12.5
+fuzz int x = 10
+fuzz int y = 20
 
-fuzz test = "Fuzzies!"
-fuzz question = cozy
-fuzz bad = not_cozy
+fuzz str test = "Fuzzies!"
+fuzz bool question = cozy
+fuzz bool bad = not_cozy
 
-fuzzArr strArr = ["a", "b", "c"]
-fuzzArr numArr = [0, 1, 2, 3]
+fuzzArr[str] strArr = ["a", "b", "c"]
+fuzzArr[int] numArr = [0, 1, 2, 3]
 
-fuzzDict testDict = ["Op Systems": 5.45, "Compilers": 2.40, "Graphics: 9,40]
+fuzzDict<str, int> testDict = ["Op Systems": 545, "Compilers": 240, "Graphics: 940]
 
 function dondi() 
   x = 12
