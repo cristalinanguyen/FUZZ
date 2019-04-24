@@ -12,7 +12,7 @@ FUZZ {
                | Call
                | FunDec
                | Exp1
-  Assignment   = "fuzz" Type typeId "=" Exp
+  Assignment   = "fuzz" TypeDec typeId "=" Exp
   Exps         = ListOf<Exp, ",">
   Exp          = Exp logop Exp1                   -- binary
                | Exp1
@@ -30,20 +30,20 @@ FUZZ {
                | Literal
                | DictExp
                | Lvalue
-  Type         = "num" | "str" | "bool"
+  TypeDec      = "num" | "str" | "bool"
   Literal      = numlit
                | strlit
                | boollit
   Lvalue       = Lvalue "[" Exp "]"               -- subscripted
                | Lvalue "." id                    -- field
                | id                               -- id
-  ArrayType    = "fuzzArr[" Type "]"
+  ArrayType    = "fuzzArr[" TypeDec "]"
   ArrayExp     = ArrayType typeId "=" "[" Exps "]"
   Field        = Literal ":" Exp
-  DictType     = "fuzzDict<" Type "," Type ">"
+  DictType     = "fuzzDict<" TypeDec "," TypeDec ">"
   DictExp      = DictType typeId "=" "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
-  FunDec       = "function" id (typeId)? "(" (Type id ("," Type id)*)* ")" Body* "~"
+  FunDec       = "function" id (typeId)? "(" (TypeDec id ("," TypeDec id)*)* ")" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
