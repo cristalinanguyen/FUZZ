@@ -1,6 +1,6 @@
 class ArrayExp {
-  constructor(type, size, fill) {
-    Object.assign(this, { type, size, fill });
+  constructor(type, size) {
+    Object.assign(this, { type, size });
   }
 }
 
@@ -36,7 +36,6 @@ class Chill {
   }
 }
 
-//HERE
 class DictType {
   constructor(fields) {
     Object.assign(this, { fields });
