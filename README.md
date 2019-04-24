@@ -24,7 +24,7 @@ All programs in the language FUZZ++ begin with `yoo!`.
 - string: `"my UGGs are soooo comfortable"`
 - numbers: `1`, `100`, `420`,`1.5`, `3.14`, `70.34799`
 - array: `[5, 6, 7, 8, 9, 10]`, `["compilers", "operating systems", "interaction design", "plang", "theory"]`
-- dictionary: Dict<str> fuzzies = {chris: "domed", liam: "caffinated", meels: "dank gardens", annie: "late and wet", sophia: "went abroad"}
+- dictionary: `Dict<str> fuzzies = {chris: "domed", liam: "caffinated", meels: "dank gardens", annie: "late and wet", sophia: "went abroad"}`
 
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
