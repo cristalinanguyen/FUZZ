@@ -90,6 +90,12 @@ class NegationExp {
   }
 }
 
+class Param {
+  constructor(id, type) {
+    Object.assign(this, { id, type });
+  }
+}
+
 class PrimitiveType {
   constructor(name) {
     Object.assign(this, { name });
