@@ -28,20 +28,17 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   Statement_chill(_1) {
     return new Chill();
   },
-  TypeDec(_1, id, _2, type) {
-    return new TypeDec(id.ast(), type.ast());
+  TypeDec(type) {
+    return new TypeDec(type.ast());
   },
   ArrayType(_1, _2, id) {
     return new ArrayType(id.ast());
   },
-  DictType(_1, fieldDecs, _2) {
-    return new DictType(fieldDecs.ast());
+  DictType(_1, type1, _2, type2, _3) {
+    return new DictType(type1.ast(), type2.ast());
   },
   FunDec(_1, id, _2, params, _4, _5, typeid, _6, body) {
     return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
-  },
-  VarDec(_1, id, _2, init) {
-    return new Variable(id.ast(), init.ast());
   },
   Field(id, _1, typeid) {
     return new Field(id.ast(), typeid.ast());
@@ -73,7 +70,7 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   ArrayExp(type, _1, size, _2, _3, fill) {
     return new ArrayExp(type.ast(), size.ast(), fill.ast());
   },
-  DictExp(type, _1, bindings, _2) {
+  DictExp(type, id, _1, _2, bindings, _3) {
     return new DictExp(type.ast(), bindings.ast());
   },
   Call(callee, _1, args, _2) {
@@ -85,7 +82,7 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   EmptyListOf() {
     return [];
   },
-  numlit(digits) {
+  numlit(digits, _1, decimal) {
     return new Literal(+this.sourceString);
   },
   strlit(_1, chars, _6) {
