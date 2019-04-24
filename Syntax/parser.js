@@ -31,13 +31,12 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   TypeDec(_1, id, _2, type) {
     return new TypeDec(id.ast(), type.ast());
   },
-//   ArrayType(_1, _2, id) {
-//     return new ArrayType(id.ast());
-//   },
-// //   confused
-//   DictType(_1, fieldDecs, _2) {
-//     return new DictType(fieldDecs.ast());
-//   },
+  ArrayType(_1, _2, id) {
+    return new ArrayType(id.ast());
+  },
+  DictType(_1, fieldDecs, _2) {
+    return new DictType(fieldDecs.ast());
+  },
   FunDec(_1, id, _2, params, _4, _5, typeid, _6, body) {
     return new Func(id.ast(), params.ast(), arrayToNullable(typeid.ast()), body.ast());
   },
