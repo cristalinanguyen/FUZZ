@@ -1,27 +1,13 @@
-const { Func, Field, PrimitiveType } = require('../ast');
+const { Func, Field, PrimType } = require('../ast');
 
-const IntType = new PrimitiveType('int');
-const StringType = new PrimitiveType('string');
-const BoolType = new PrimitiveType('boolean');
+const IntType = new PrimType('int');
+const StringType = new PrimType('string');
+const BoolType = new PrimType('boolean');
 
 const standardFunctions = [
-  new Func('print', [new Param('s', StringType)]),
-  new Func('flush', []),
-  new Func('getchar', [], StringType),
-  new Func('ord', [new Field('s', StringType)], IntType),
-  new Func('chr', [new Field('x', IntType)], StringType),
-  new Func('size', [new Field('s', StringType)], IntType),
-  new Func('substring', [
-    new Field('s', StringType),
-    new Field('first', IntType),
-    new Field('n', IntType),
-  ], StringType),
-  new Func('concat', [
-    new Field('s', StringType),
-    new Field('t', StringType),
-  ], StringType),
-  new Func('not', [new Field('x', IntType)], IntType),
-  new Func('exit', [new Field('code', IntType)]),
+  new Func('show', [new Param('s', StringType)]),
+  new Func('length', [new Param('s', StringType)], IntType),
+  new Func('cuddle', [new Param('s', StringType), new Field('t', StringType),], StringType),
 ];
 
 module.exports = { IntType, StringType, BoolType, standardFunctions };
