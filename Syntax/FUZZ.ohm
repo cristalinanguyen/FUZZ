@@ -1,7 +1,7 @@
 FUZZ {
   Program      = Body
   Body         = Statement+
-  Statement    = Assignment
+  Statement    = VarDec
                | "iph" Exp Body "~"
                  ("elz iph" Exp Body "~")*
                  ("elz" Body "~")?                -- iph
@@ -12,7 +12,7 @@ FUZZ {
                | Call
                | FunDec
                | Exp1
-  Assignment   = "fuzz" TypeDec typeId "=" Exp
+  VarDec       = "fuzz" Type id "=" Exp
   Returnt      = "returnt" Exp
   Exps         = ListOf<Exp, ",">
   Exp          = Exp logop Exp1                   -- binary
@@ -26,25 +26,27 @@ FUZZ {
   Exp4         = prefixop Exp5                    -- negation
                | Exp5
   Exp5         = "(" Exp ")"                      -- parens
+               | Literal
+               | Lvalue
                | Call
                | ArrayExp
-               | Literal
                | DictExp
-               | Lvalue
-  TypeDec      = "num" | "str" | "bool"
+  PrimType     = "num" | "str" | "bool"
+  Type         = PrimType
+               | "Arr" "<" PrimType ">"       -- array
+               | "Dict" "<" PrimType ">"      -- dict
   Literal      = numlit
                | strlit
                | boollit
-  Lvalue       = Lvalue "[" Exp "]"               -- subscripted
-               | Lvalue "." id                    -- field
-               | id                               -- id
-  ArrayType    = "fuzzArr[" TypeDec "]"
-  ArrayExp     = ArrayType typeId "=" "[" Exps "]"
-  Field        = Literal ":" Exp
-  DictType     = "fuzzDict<" TypeDec "," TypeDec ">"
-  DictExp      = DictType typeId "=" "{" ListOf<Field, ","> "}"
+  Lvalue       = Lvalue "[" Exp "]"           -- subscripted
+               | Lvalue "." id                -- field
+               | id                           -- id
+  ArrayExp     = "[" Exps "]"
+  Field        = id ":" Exp
+  DictExp      = "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
-  FunDec       = "function" id (typeId)? "(" (TypeDec id ("," TypeDec id)*)* ")" Body* "~"
+  FunDec       = "function" id (typeId)? "(" ListOf<Param, ","> ")" Body* "~"
+  Param        = PrimType id
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
