@@ -58,11 +58,8 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   Exp4_negation(op, right) {
     return new NegationExp(op.ast(), right.ast());
   },
-  Exp5_binary(left, op, right) {
-    return new BinaryExpression(op.ast(), left.ast(), right.ast());
-  },
-  Exp6_negation(_1, operand) {
-    return new NegationExp(operand.ast());
+  Exp5_parens(_1, exp, _2) {
+    return new ParensExpression(exp.ast());
   },
   Lvalue_id(id) {
     return new IdExp(id.ast());
