@@ -37,9 +37,11 @@ FUZZ {
   Lvalue       = Lvalue "[" Exp "]"               -- subscripted
                | Lvalue "." id                    -- field
                | id                               -- id
-  ArrayExp     = "fuzzArr[" Type "]" typeId "=" "[" Exps "]"
+  ArrayType    = "fuzzArr[" Type "]"
+  ArrayExp     = ArrayType typeId "=" "[" Exps "]"
   Field        = Literal ":" Exp
-  DictExp      = "fuzzDict<" Type "," Type ">" typeId "=" "{" ListOf<Field, ","> "}"
+  DictType     = "fuzzDict<" Type "," Type ">"
+  DictExp      = DictType typeId "=" "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
   FunDec       = "function" id (typeId)? "(" (Type id ("," Type id)*)* ")" Body* "~"
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
