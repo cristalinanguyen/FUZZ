@@ -16,8 +16,8 @@ function arrayToNullable(a) {
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-Statement_iph(_1, test, body,  _2, _3, consequent, body,  _3, _4, alternate, _5) {
-    return new IphExp(test.ast(), consequent.ast(), body.ast(), arrayToNullable(alternate.ast()));
+Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _3, _4, alternate, _5) {
+    return new IphExp(test.ast(), consequent.ast(), body1.ast(), body2.ast, arrayToNullable(alternate.ast()));
   },
   Statement_while(_1, test, _2, body) {
     return new WhileExp(test.ast(), body.ast());
