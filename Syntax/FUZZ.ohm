@@ -30,7 +30,7 @@ FUZZ {
                | Literal
                | DictExp
                | Lvalue
-  Type         = "int" | "str" | "bool"
+  Type         = "num" | "str" | "bool"
   Literal      = numlit
                | strlit
                | boollit
