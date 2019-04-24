@@ -4,15 +4,16 @@ FUZZ {
   Statement    = Assignment
                | "iph" Exp Body "~"
                  ("elz iph" Exp Body "~")*
-                 ("elz" Body)?
-                 "~"                              -- iph
+                 ("elz" Body "~")?                -- iph
                | "while" Exp Body "~"             -- while
                | Lvalue "=" Exp                   -- assign
                | "chill"                          -- chill
+               | Returnt                          -- returnt
                | Call
                | FunDec
                | Exp1
   Assignment   = "fuzz" TypeDec typeId "=" Exp
+  Returnt      = "returnt" Exp
   Exps         = ListOf<Exp, ",">
   Exp          = Exp logop Exp1                   -- binary
                | Exp1
@@ -44,7 +45,7 @@ FUZZ {
   DictExp      = DictType typeId "=" "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
   FunDec       = "function" id (typeId)? "(" (TypeDec id ("," TypeDec id)*)* ")" Body* "~"
-  keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" |
+  keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
                   "cozy" | "not_cozy") ~idrest
   typeId       = id
