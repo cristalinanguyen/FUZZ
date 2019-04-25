@@ -1,3 +1,4 @@
+yoo!
 function pow_of(num base, num exponent)
     fuzz num result = 1
     fuzz num i = 0
