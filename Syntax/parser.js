@@ -4,7 +4,7 @@ const ohm = require('ohm-js');
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field,
   Func, IdExp, IphExp, Literal, MemberExp, Param, Program, Returnt, NegationExp, SubscriptedExp,
-  Type, Variable, WhileExp,
+  Type, VarDec, WhileExp,
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('Syntax/FUZZ.ohm'));
@@ -22,6 +22,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   Body(statement) {
     return new Body(statement.ast())
+  },
+  //  VarDec       = "fuzz" Type id "=" Exp
+
+  VarDec(_1, type, id, _2, exp) {
+    return new VarDec(type.ast(), id.ast(), exp.ast());
   },
   Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _6) {
     return new IphExp(test.ast(), consequent.ast(), body1.ast(), body2.ast, arrayToNullable(alternate.ast()));
