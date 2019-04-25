@@ -9,7 +9,13 @@ const syntaxCheck = require('../syntax-checker');
 
 const program = String.raw`
 
-yoo! tests are so cool !
+heres the thing: we're testing out our program !!
+
+fuzz num x = 10
+fuzz num y = 2
+fuzz str greet = "Hello, world"
+fuzz bool yay = cozy
+fuzz bool aww = not_cozy
 
 `;
 
