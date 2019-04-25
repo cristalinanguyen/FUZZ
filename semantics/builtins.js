@@ -1,4 +1,4 @@
-const { Func, Field, Type } = require('../ast');
+const { Func, Param, Type } = require('../ast');
 
 const IntType = new Type('int');
 const StringType = new Type('string');
