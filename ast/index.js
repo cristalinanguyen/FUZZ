@@ -4,12 +4,6 @@ class ArrayExp {
   }
 }
 
-class ArrayType {
-  constructor(memberType) {
-    Object.assign(this, { memberType });
-  }
-}
-
 class AssignmentStatement {
     constructor(target, source) {
         Object.assign(this, { target, source });
@@ -33,12 +27,6 @@ class Chill {
     if (!context.inLoop) {
         throw new Error('Break statement is not inside the loop');
     }
-  }
-}
-
-class DictType {
-  constructor(fields) {
-    Object.assign(this, { fields });
   }
 }
 
@@ -108,7 +96,7 @@ class SubscriptedExp {
   }
 }
 
-class TypeDec {
+class Type {
   constructor(id, type) {
     Object.assign(this, { id, type });
   }
@@ -127,7 +115,7 @@ class WhileExp {
 }
 
 module.exports = {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, DictType, Field,
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
   Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
-  TypeDec, Variable, WhileExp,
+  Type, Variable, WhileExp,
 };
