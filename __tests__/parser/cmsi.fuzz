@@ -1,3 +1,4 @@
+yoo!
 function csmi(str professor)
     iph (professor == "Toal")
         returnt "Compilers"
