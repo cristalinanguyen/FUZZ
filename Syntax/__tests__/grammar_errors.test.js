@@ -6,7 +6,10 @@ const errors = [
   ['unknown operator', 'x = 2^4'],
   ['unclosed comment', 'heres the thing: I like chai'],
   ['illegal start to comment', 'here: I like iced chai !!'],
-  ['illegal start variable name', 'fuzz str $$ = "hey"']
+  ['illegal start variable name', 'fuzz str $$ = "hey"'],
+  ['unclosed array', 'fuzz Arr<num> class = [185,186,401'],
+  ['unclosed dictionary', 'fuzz Dict<num> coffee_prices = {chai: 3.50, tea: 2.50, cold_brew: 4.00'],
+  
 ];
 
 describe('The syntax checker', () => {
