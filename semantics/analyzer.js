@@ -1,7 +1,7 @@
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExp, Call, Chill, DictType, DictExp, Field,
-  ForExp, Func, IdExp, IphExp, Literal, MemberExp, NegationExp, Param,
-  SubscriptedExp, TypeDec, Variable, WhileExp,
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
+  Type, Variable, WhileExp,
 } = require('../ast');
 
 const { IntType, StringType, BoolType } = require('./builtins');
