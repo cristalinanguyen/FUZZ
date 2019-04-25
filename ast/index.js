@@ -84,7 +84,7 @@ class Param {
   }
 }
 
-class PrimitiveType {
+class PrimType {
   constructor(name) {
     Object.assign(this, { name });
   }
