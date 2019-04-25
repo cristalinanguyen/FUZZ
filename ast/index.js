@@ -10,6 +10,10 @@ class AssignmentStatement {
     }
 }
 
+class Body {
+  constructor(statement)
+      Object.assign(this, {statement});
+
 class BinaryExpression {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
@@ -121,7 +125,7 @@ class WhileExp {
 }
 
 module.exports = {
-  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, NegationExp, SubscriptedExp,
+  ArrayExp, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, Program, NegationExp, SubscriptedExp,
   Type, Variable, WhileExp,
 };
