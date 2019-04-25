@@ -10,7 +10,7 @@ const Context = require('../context');
 
 const errors = [
   ['use of undeclared variable', 'x = 1'],
-  ['non integer if condition', 'if "hello" ~'],
+  ['non integer if condition', 'iph "hello" returnt 5 ~'],
   ['non integer in add', '3 + "dog"'],
   ['non integer in subtract', '"dog" - 5'],
   ['non integer in multiply', '"dog" * 5'],
