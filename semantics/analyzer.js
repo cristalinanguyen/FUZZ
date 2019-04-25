@@ -1,7 +1,7 @@
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
   Func, IdExp, IphExp, Literal, MemberExp, Param, NegationExp, SubscriptedExp,
-  Type, Variable, WhileExp,
+  Type, VarDec, WhileExp,
 } = require('../ast');
 
 const { NumType, StringType, BoolType } = require('./builtins');
@@ -153,7 +153,7 @@ Type.prototype.analyze = function (context) {
   this.type.analyze(context);
 };
 
-Variable.prototype.analyze = function (context) {
+VarDec.prototype.analyze = function (context) {
   this.init.analyze(context);
   if (this.type) {
     this.type = context.lookupType(this.type);
