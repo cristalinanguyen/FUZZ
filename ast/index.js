@@ -102,6 +102,11 @@ class Program {
   }
 }
 
+class Returnt {
+  constructor(returnValue) {
+    this.returnValue = returnValue;
+  }
+
 class SubscriptedExp {
   constructor(array, subscript) {
     Object.assign(this, { array, subscript });
@@ -128,6 +133,6 @@ class WhileExp {
 
 module.exports = {
   ArrayExp, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, Program, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
   Type, Variable, WhileExp,
 };
