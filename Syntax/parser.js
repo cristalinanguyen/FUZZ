@@ -76,9 +76,9 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   NonemptyListOf(first, _, rest) {
     return [first.ast(), ...rest.ast()];
   },
-  ListOf(first, _, rest) {
-    return [first.ast(), ..rest.ast()];
-  },
+//   ListOf(first, _, rest) {
+//     return [first.ast(), ..rest.ast()];
+//   },
   numlit(digits, _1, decimal) {
     return new Literal(+this.sourceString);
   },
