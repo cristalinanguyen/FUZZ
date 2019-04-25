@@ -2,9 +2,9 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, DictType, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, NegationExp,  SubscriptedExp,
-  TypeDec, Variable, WhileExp,
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
+  Type, Variable, WhileExp,
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('Syntax/FUZZ.ohm'));
@@ -28,14 +28,8 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   Statement_chill(_1) {
     return new Chill();
   },
-  TypeDec(type) {
-    return new TypeDec(type.ast());
-  },
-  ArrayType(_1, _2, id) {
-    return new ArrayType(id.ast());
-  },
-  DictType(_1, type1, _2, type2, _3) {
-    return new DictType(type1.ast(), type2.ast());
+  Type(type) {
+    return new Type(type.ast());
   },
   FunDec(_fun, id1, typeid, _lp, params, _rp, body, _slipper) {
     return new Func(id1.ast(), arrayToNullable(typeid.ast()), type1.ast(), id2.ast(), type2.ast(), id3.ast(), body.ast());
@@ -70,11 +64,11 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   Lvalue_field(record, _1, id) {
     return new MemberExp(record.ast(), id.ast());
   },
-  ArrayExp(type, _1, size, _2, _3, fill) {
-    return new ArrayExp(type.ast(), size.ast(), fill.ast());
+  ArrayExp( _1, exp, _2,) {
+    return new ArrayExp(exp.ast());
   },
-  DictExp(type, id, _1, _2, bindings, _3) {
-    return new DictExp(type.ast(), bindings.ast());
+  DictExp( _1, fields, _2) {
+    return new DictExp(fields.ast());
   },
   Call(callee, _1, args, _2) {
     return new Call(callee.ast(), args.ast());
@@ -82,8 +76,8 @@ Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _
   NonemptyListOf(first, _, rest) {
     return [first.ast(), ...rest.ast()];
   },
-  EmptyListOf() {
-    return [];
+  ListOf(first, _, rest) {
+    return [first.ast(), ..rest.ast()];
   },
   numlit(digits, _1, decimal) {
     return new Literal(+this.sourceString);
