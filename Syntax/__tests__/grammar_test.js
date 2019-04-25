@@ -5,7 +5,7 @@
  * syntactic forms of FUZZ
  */
 
-const syntaxCheck = require('../syntax-checker');
+const syntaxCheck = require('../syntax_checker');
 
 const program = String.raw`
 yoo!
