@@ -120,9 +120,9 @@ class Type {
   }
 }
 
-class Variable {
-  constructor(id, type, init) {
-    Object.assign(this, { id, type, init });
+class VarDec {
+  constructor(type, id, body) {
+    Object.assign(this, { type, id, body });
   }
 }
 
@@ -135,5 +135,5 @@ class WhileExp {
 module.exports = {
   ArrayExp, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, Field,
   Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
-  Type, Variable, WhileExp,
+  Type, VarDec, WhileExp,
 };
