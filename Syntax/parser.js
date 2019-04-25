@@ -3,7 +3,7 @@ const ohm = require('ohm-js');
 
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, NegationExp, SubscriptedExp,
   Type, Variable, WhileExp,
 } = require('../ast');
 
