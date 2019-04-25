@@ -11,8 +11,10 @@ class AssignmentStatement {
 }
 
 class Body {
-  constructor(statement)
+  constructor(statement) {
       Object.assign(this, {statement});
+  }
+}
 
 class BinaryExpression {
   constructor(op, left, right) {
