@@ -37,23 +37,23 @@ fuzz bool dondi_wears_airpods = cozy
 
 ### Function Declarations
 
-The tilde (~) is used to enclose method bodies, as well as group statements in 'iph' statements and 'while' loops.
+The tilde (~) is used to denote the end of the method bodies, as well as group statements in 'iph' statements and 'while' loops.
 
 ```
-function bool dondi_wearing_airpods()
+function dondi_wearing_airpods()
   returnt cozy
 ~
 
-function str bjohnson()
+function bjohnson()
   returnt "squirrel!"
 ~
 
-function num mins_forney_spends_erasing(num classes)
+function mins_forney_spends_erasing(num classes)
   fuzz time = 8 * classes
   returnt time
 ~  
 
-function bool toal_playing_vball(bool weather)
+function toal_playing_vball(bool weather)
   iph (weather)
     returnt cozy
   ~    
@@ -62,7 +62,7 @@ function bool toal_playing_vball(bool weather)
   ~
 ~
 
-function str dorin()
+function dorin()
   returnt "among friends"
 ~
 ```
@@ -81,6 +81,15 @@ elz
   return "I dont know what the fuzzies are wearing today."
 ~
 
+```
+
+### `while` Loops
+A `while` loop executes a block of code while some specified condition remains true. The enclosed body of code is executed, and then checks to see if the condition still remains true before executing again. While loops are also closed using a tilde (~), which denotes the end of the function. 
+
+```
+while time < 1800
+  return "the sun has not set yet"
+~  
 ```
 
 ### Comments
