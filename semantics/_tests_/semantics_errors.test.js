@@ -29,7 +29,7 @@ const errors = [
   ['incorrect comment', 'yoo! htt we love programming !!'],
   ['incompatible array types', 'yoo! fuzz Arr<str> cmsi_classes = ["programing lab", 186, "interaction design", 370]'],
   ['incompatible dictionary key/value types', 'yoo! fuzz Dict<num> fuzz_gang = ["Liam": 21, "Chris": 21, "Lina": "youngest"]'],
-  ['returnt statement outside of function body', 'yoo! function cozy_coding() ~ ~ returnt cozy'], 
+  ['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'], 
   ['incompatible assignment types', 'yoo! fuzz num x = 10 fuzz str drink = "chai" fuzz str 10 = drink'],
   ['define array as dictionary', 'yoo! fuzz Arr<str> jacket_colors = {"Annie": "black", "Amelia": "gray", "Lina": "pink"}'],
   ['define dictionary as array', 'yoo! fuzz Dict<str> den = ["pumpkin muffin", "Kombucha", "cookie"]'], 
