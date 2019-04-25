@@ -2,8 +2,8 @@ const fs = require('fs');
 const ohm = require('ohm-js');
 
 const {
-  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, NegationExp, SubscriptedExp,
+  ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
   Type, Variable, WhileExp,
 } = require('../ast');
 
@@ -19,6 +19,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   
   Program(_1, body) {
     return new Program(body.ast())
+  },
+  Body(statement) {
+    return new Body(statement.ast())
   },
   Statement_iph(_1, test, body1,  _2, _3, consequent, body2,  _4, _5, alternate, _6) {
     return new IphExp(test.ast(), consequent.ast(), body1.ast(), body2.ast, arrayToNullable(alternate.ast()));
