@@ -1,8 +1,8 @@
-const { Func, Field, PrimType } = require('../ast');
+const { Func, Field, Type } = require('../ast');
 
-const IntType = new PrimType('int');
-const StringType = new PrimType('string');
-const BoolType = new PrimType('boolean');
+const IntType = new Type('int');
+const StringType = new Type('string');
+const BoolType = new Type('boolean');
 
 const standardFunctions = [
   new Func('show', [new Param('s', StringType)]),
