@@ -3,7 +3,7 @@ const ohm = require('ohm-js');
 
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, Returnt, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Parens, Program, Returnt, NegationExp, SubscriptedExp,
   Type, VarDec, WhileExp,
 } = require('../ast');
 
@@ -65,7 +65,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new NegationExp(op.ast(), right.ast());
   },
   Exp5_parens(_1, exp, _2) {
-    return new ParensExpression(exp.ast());
+    return new Parens(exp.ast());
   },
   Lvalue_id(id) {
     return new IdExp(id.ast());
