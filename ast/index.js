@@ -4,6 +4,12 @@ class ArrayExp {
   }
 }
 
+class ArrayType {
+  constructor(memberType) {
+    Object.assign(this, { memberType });
+  }
+}
+
 class AssignmentStatement {
     constructor(target, source) {
         Object.assign(this, { target, source });
@@ -39,6 +45,12 @@ class Chill {
 class DictExp {
   constructor(type, bindings) {
     Object.assign(this, { type, bindings });
+  }
+}
+
+class DictType {
+  constructor(fields) {
+    Object.assign(this, { fields });
   }
 }
 
@@ -139,7 +151,7 @@ class WhileExp {
 }
 
 module.exports = {
-  ArrayExp, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, Field,
+  ArrayExp, ArrayType, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, DictType, Field,
   Func, IdExp, IphExp, Literal, MemberExp, Param, Parens, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
   Type, VarDec, WhileExp,
 };
