@@ -1,3 +1,14 @@
+/*
+ * Semantics Success Test
+ *
+ * These tests check that the semantic analyzer correctly accepts a program that passes
+ * all of semantic constraints specified by the language.
+ */
+
+const parse = require('../../ast/parser');
+const Context = require('../context');
+
+const program = String.raw`
 yoo!
 fuzz num x = 10
 fuzz num y = 2.5
@@ -42,3 +53,14 @@ fuzz bool u = (x < 15)
 fuzz bool v = (x not= 5)
 
 x = y
+`;
+
+describe('The semantic analyzer', () => {
+  test('accepts the mega program with all syntactic forms', (done) => {
+    const astRoot = parse(program);
+    expect(astRoot).toBeTruthy();
+    astRoot.analyze(Context.INITIAL);
+    expect(astRoot).toBeTruthy();
+    done();
+  });
+});
