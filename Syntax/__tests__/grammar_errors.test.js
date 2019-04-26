@@ -11,6 +11,8 @@ const errors = [
   ['unclosed dictionary', 'yoo! fuzz Dict<num> coffee_prices = {chai: 3.50, tea: 2.50, cold_brew: 4.00'],
   ['method body not enclosed', 'yoo! function cozy_coding() returnt cozy'],
   ['statement not enclosed', 'yoo! iph(coffee_cart) returnt "chai"']
+  ['incompatible assignment types', 'yoo! fuzz num x = 10 fuzz str drink = "chai" fuzz str 10 = drink'],
+
 ];
 
 describe('The syntax checker', () => {
