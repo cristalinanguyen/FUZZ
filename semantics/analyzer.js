@@ -140,14 +140,6 @@ DictExp.prototype.analyze = function (context) {
   });
 };
 
-DictType.prototype.getFieldForId = function (id) {
-  const field = this.fields.find(f => f.id === id);
-  if (field === null) {
-    throw new Error('No such field');
-  }
-  return field;
-};
-
 SubscriptedExp.prototype.analyze = function (context) {
   this.array.analyze(context);
   check.isArray(this.array);
