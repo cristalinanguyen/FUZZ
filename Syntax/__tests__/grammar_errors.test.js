@@ -13,7 +13,7 @@ const errors = [
   ['statement not enclosed', 'yoo! iph(coffee_cart) returnt "chai"'],
   ['incompatible assignment types', 'yoo! fuzz num x = 10 fuzz str drink = "chai" fuzz str 10 = drink'],
   ['define array as dictionary', 'yoo! fuzz Arr<str> jacket_colors = {"Annie": "black", "Amelia": "gray", "Lina": "pink"}'],
-  ['define dictionary as array', 'yoo! fuzz Dict<str> den = ["pumpkin muffin", "Kombucha", "cookie"]'],
+ // ['define dictionary as array', 'yoo! fuzz Dict<str> den = ["pumpkin muffin", "Kombucha", "cookie"]'],
 ];
 
 describe('The syntax checker', () => {
