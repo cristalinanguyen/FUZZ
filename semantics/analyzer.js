@@ -1,6 +1,6 @@
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
   Type, VarDec, WhileExp,
 } = require('../ast');
 
@@ -124,6 +124,10 @@ NegationExp.prototype.analyze = function (context) {
 Param.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   context.add(this);
+};
+
+Program.prototype.analyze = function (context) {
+  this.program.analyze(context); 
 };
 
 DictExp.prototype.analyze = function (context) {
