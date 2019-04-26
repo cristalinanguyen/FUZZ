@@ -127,7 +127,7 @@ Param.prototype.analyze = function (context) {
 };
 
 Program.prototype.analyze = function (context) {
-  this.program.analyze(context); 
+  this.name.analyze(context); 
 };
 
 DictExp.prototype.analyze = function (context) {
