@@ -5,7 +5,7 @@
  * all of semantic constraints specified by the language.
  */
 
-const parse = require('../../ast/parser');
+const parse = require('../../Syntax/parser');
 const Context = require('../context');
 
 const program = String.raw`
