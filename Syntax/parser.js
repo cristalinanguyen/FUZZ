@@ -44,7 +44,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new Type(type.ast());
   },
   FunDec(_fun, id1, typeid, _lp, params, _rp, body, _slipper) {
-    return new Func(id1.ast(), arrayToNullable(typeid.ast()), type1.ast(), id2.ast(), type2.ast(), id3.ast(), body.ast());
+    return new Func(id1.ast(), arrayToNullable(typeid.ast()), params.ast(), body.ast());
   },
   Param(typeid, id) {
     return new Param(typeid.ast(), id.ast());
