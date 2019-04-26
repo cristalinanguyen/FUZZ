@@ -90,6 +90,11 @@ class Param {
   }
 }
 
+class Parens {
+  constructor(_1, exp, _2) {
+    Object.assign(this, {exp});
+  }
+
 class PrimType {
   constructor(name) {
     Object.assign(this, { name });
@@ -134,6 +139,6 @@ class WhileExp {
 
 module.exports = {
   ArrayExp, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Parens, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
   Type, VarDec, WhileExp,
 };
