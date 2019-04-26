@@ -126,10 +126,6 @@ Param.prototype.analyze = function (context) {
   context.add(this);
 };
 
-Program.prototype.analyze = function (context) {
-  this.name.analyze(context); 
-};
-
 DictExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isDictType(this.type);
