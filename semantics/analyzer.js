@@ -59,7 +59,7 @@ Chill.prototype.analyze = function (context) {
 
 Field.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
-};
+};*/
 
 // Function analysis is broken up into two parts in order to support (nutual)
 // recursion. First we have to do semantic analysis just on the signature
@@ -140,6 +140,13 @@ DictExp.prototype.analyze = function (context) {
   });
 };
 
+DictType.prototype.getFieldForId = function (id) {
+  const field = this.fields.find(f => f.id === id);
+  if (field === null) {
+    throw new Error('No such field');
+  }
+  return field;
+};
 
 SubscriptedExp.prototype.analyze = function (context) {
   this.array.analyze(context);
