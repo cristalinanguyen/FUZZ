@@ -16,16 +16,6 @@ fuzz str greet = "Hello, world"
 fuzz bool yay = cozy
 fuzz bool aww = not_cozy
 
-function test ()
-  iph (x > y) 
-    returnt cozy
-  ~
-  elz iph (x == y)
-    return not_cozy
-  ~
-  elz
-    returnt cozy
-  ~
 
 `;
 
