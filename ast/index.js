@@ -94,6 +94,7 @@ class Parens {
   constructor(_1, exp, _2) {
     Object.assign(this, {exp});
   }
+}
 
 class PrimType {
   constructor(name) {
