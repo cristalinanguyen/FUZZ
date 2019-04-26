@@ -64,5 +64,5 @@ FUZZ {
   relop        = "<="| "<" | ">=" | ">" | "not=" | "=="
   prefixop     = "not" | "-"
   space       := " " | "\t" | "\n" | comment
-  comment      = "heres the thing:" (~"heres the thing:" any)* "!!"
+  comment      = "heres the thing:" (~"heres the thing:" any)*
 }
