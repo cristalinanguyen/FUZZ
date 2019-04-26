@@ -82,10 +82,10 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   DictExp( _1, fields, _2) {
     return new DictExp(fields.ast());
   },
-  ArrayType(_1, _2, type, _3) {
+  Type_array(_1, _2, type, _3) {
     return new ArrayType(type.ast());
   },
-  DictType(_1, _2, type, _3) {
+  Type_dict(_1, _2, type, _3) {
     return new DictType(type.ast());
   },
   Call(callee, _1, args, _2) {
