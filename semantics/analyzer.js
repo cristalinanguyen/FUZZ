@@ -59,7 +59,7 @@ Chill.prototype.analyze = function (context) {
 
 Field.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
-};*/
+};
 
 // Function analysis is broken up into two parts in order to support (nutual)
 // recursion. First we have to do semantic analysis just on the signature
