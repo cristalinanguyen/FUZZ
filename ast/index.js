@@ -115,7 +115,7 @@ class PrimType {
 }
 
 class Program {
-  constuctor(name) {
+  constructor(name) {
     Object.assign(this, {name});
   }
 }

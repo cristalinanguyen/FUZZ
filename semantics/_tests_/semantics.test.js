@@ -19,7 +19,7 @@ fuzz bool aww = not_cozy
 heres the thing: we are testing our program
 
 function test ()
-  iph (x > y) 
+  iph (x > y)
     returnt cozy
   ~
   elz iph (x == y)
