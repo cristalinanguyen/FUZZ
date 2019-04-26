@@ -99,7 +99,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   EmptyListOf() {
     return [];
-  }
+  },
   numlit(digits, _1, decimal) {
     return new Literal(+this.sourceString);
   },
