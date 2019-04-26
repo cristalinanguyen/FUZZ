@@ -9,6 +9,7 @@ const syntaxCheck = require('../syntax_checker');
 
 const program = String.raw`
 yoo!
+heres the thing: we are testing our program !!
 
 fuzz num x = 10
 fuzz num y = 2.5
