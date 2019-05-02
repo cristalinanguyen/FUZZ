@@ -43,8 +43,7 @@ fuzz str dict_test = age.Annie
 fuzz bool s = (x >= 1)
 fuzz bool t = (y <= 0)
 fuzz bool u = (x < 15)
-fuzz bool v = (x not= 5)
-`;
+fuzz bool v = (x not= 5)`;
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
