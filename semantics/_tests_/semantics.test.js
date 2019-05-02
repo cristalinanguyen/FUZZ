@@ -39,7 +39,7 @@ fuzz num b = x - y
 fuzz num c = x / y
 fuzz num d = x ** y
 fuzz str arr_test = names[0]
-fuzz str dict_test = age.Annie`;
+fuzz str dict_test = age.Annie ~`;
 
 /* fuzz bool s = x >= 1
 fuzz bool t = y <= 0
