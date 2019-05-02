@@ -15,7 +15,7 @@ fuzz num y = 2.5
 fuzz str greet = "Hello, world"
 fuzz bool yay = cozy
 fuzz bool aww = not_cozy
-heres the thing: we are testing our program
+
 function test ()
   iph (x > y) 
     returnt cozy
