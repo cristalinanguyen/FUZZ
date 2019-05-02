@@ -49,11 +49,12 @@ x = y
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
-    const astRoot = parse(program);
-    expect(astRoot).toBeTruthy();
-    console.log(astRoot);
-    astRoot.analyze(Context.INITIAL);
-    expect(astRoot).toBeTruthy();
+   // const astRoot = parse(program);
+    const root = parse(program);
+    expect(root).toBeTruthy();
+    console.log(root);
+    root.analyze(Context.INITIAL);
+    expect(root).toBeTruthy();
     done();
   });
 });
