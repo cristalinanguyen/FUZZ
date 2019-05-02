@@ -21,10 +21,10 @@ function test ()
     returnt cozy
   ~
   elz iph (x == y)
-    return not_cozy
+    returnt not_cozy
   ~
   elz
-    print greet
+    returnt greet
   ~
 fuzz Arr<str> names = ["Liam", "Chris", "Lina", "Meelz", "Annie", "Soph"]
 fuzz Dict<num> age = {Annie: 21, Lina: 20}
