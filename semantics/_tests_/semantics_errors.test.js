@@ -16,6 +16,9 @@ const errors = [
   ['non integer in multiply', 'yoo! "dog" * 5'],
   ['non integer in divide', 'yoo! "dog" / 5'],
   ['non integer in exponent', 'yoo! "dog" ** 5'],
+  ['incorrect types', 'yoo! fuzz num test = "hello"'],
+  ['incorrect types', 'yoo! fuzz bool test = 12'],
+  ['incorrect types', 'yoo! fuzz str test = not_cozy'],
   ['types do not match in equality test', 'yoo! 2 == "dog"'],
   ['types do not match in inequality test', 'yoo! 2 > "dog"'],
   ['redeclaration of variable', 'yoo! fuzz num x = 1 fuzz num x = 2'],
@@ -28,7 +31,6 @@ const errors = [
   ['incompatible dictionary key/value types', 'yoo! fuzz Dict<num> fuzz_gang = {Liam: 21, Chris: 21, Lina: "youngest"}'],
   ['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'], 
   
-  // TODO: We need dozens more here....
 ];
 
 describe('The semantic analyzer', () => {
