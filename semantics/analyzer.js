@@ -1,7 +1,7 @@
 const {
-  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
+  ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field,
   Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
-  Type, VarDec, WhileExp,
+  Type, VarDec, WhileExp, Returnt,
 } = require('../ast');
 
 const { NumType, StringType, BoolType } = require('./builtins');
@@ -39,9 +39,12 @@ BinaryExpression.prototype.analyze = function (context) {
   } else {
     check.expressionsHaveTheSameType(this.left, this.right);
   }
-  this.type = IntType;
+  this.type = NumType;
 };
 
+Body.prototype.analyze = function (context) {
+  this.statements.forEach(s => s.analyze(context));
+};
 
 Call.prototype.analyze = function (context) {
   this.callee = context.lookupValue(this.callee);
@@ -64,15 +67,10 @@ Field.prototype.analyze = function (context) {
 // (including the return type). This is so other functions that may be declared
 // before this one have calls to this one checked.
 
-Func.prototype.analyzeSignature = function (context) {
-  this.bodyContext = context.createChildContextForFunctionBody();
-  this.params.forEach(p => p.analyze(this.bodyContext));
-  this.returnType = context.lookupType(this.returnType);
-};
-
-Func.prototype.analyze = function () {
-  this.body.analyze(this.bodyContext);
-  check.isAssignableTo(this.body, this.returnType, 'Type mismatch in function return');
+Func.prototype.analyze = function (context) {
+  const bodyContext = context.createChildContextForFunctionBody();
+  this.params.forEach(p => p.analyze(bodyContext));
+  this.body.statements.forEach(s => s.analyze(bodyContext));
 };
 
 IdExp.prototype.analyze = function (context) {
@@ -96,11 +94,11 @@ IphExp.prototype.analyze = function (context) {
 
 Literal.prototype.analyze = function () {
   if (typeof this.value === 'number') {
-    this.type = IntType;
-  } else if (typeof this.value === 'string') {
-    this.type = StringType;
-  } else if (typeof this.value === 'boolean') {
+    this.type = NumType;
+  } else if ((/^(not_)?cozy$/).test(this.value)) {
     this.type = BoolType;
+  } else {
+    this.type = StringType;
   }
 };
 
@@ -114,7 +112,7 @@ MemberExp.prototype.analyze = function (context) {
 NegationExp.prototype.analyze = function (context) {
   this.operand.analyze(context);
   check.isInteger(this.operand, 'Operand of negation');
-  this.type = IntType;
+  this.type = NumType;
   check.isBoolean(this.operand, 'Operand of negation');
   this.type = BoolType;
 };
@@ -124,6 +122,15 @@ Param.prototype.analyze = function (context) {
   context.add(this);
 };
 
+Program.prototype.analyze = function (context) {
+  this.body.analyze(context);
+};
+
+Returnt.prototype.analyze = function (context) {
+  // Check that you are in a function
+  // analyze the expression
+  // Check its type against the type of the function's return type if it is there
+}
 DictExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isDictType(this.type);
@@ -153,7 +160,7 @@ Type.prototype.analyze = function (context) {
 VarDec.prototype.analyze = function (context) {
   this.init.analyze(context);
   if (this.type) {
-    this.type = context.lookupType(this.type);
+    this.type = context.lookupType(this.type.id);
     check.isAssignableTo(this.init, this.type);
   } else {
     // Yay! type inference!
@@ -167,5 +174,4 @@ WhileExp.prototype.analyze = function (context) {
   check.isInteger(this.test, 'Test in while');
   check.isBoolean(this.test, 'Test in while');
   this.body.analyze(context.createChildContextForLoop());
-
 };

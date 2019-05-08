@@ -16,9 +16,9 @@ const errors = [
   ['non integer in multiply', 'yoo! "dog" * 5'],
   ['non integer in divide', 'yoo! "dog" / 5'],
   ['non integer in exponent', 'yoo! "dog" ** 5'],
-  ['incorrect types', 'yoo! fuzz num test = "hello"'],
-  ['incorrect types', 'yoo! fuzz bool test = 12'],
-  ['incorrect types', 'yoo! fuzz str test = not_cozy'],
+  ['incorrect types 1', 'yoo! fuzz num test = "hello"'],
+  ['incorrect types 2', 'yoo! fuzz bool test = 12'],
+  ['incorrect types 3', 'yoo! fuzz str test = not_cozy'],
   ['types do not match in equality test', 'yoo! 2 == "dog"'],
   ['types do not match in inequality test', 'yoo! 2 > "dog"'],
   ['redeclaration of variable', 'yoo! fuzz num x = 1 fuzz num x = 2'],
@@ -29,8 +29,8 @@ const errors = [
   ['non integer subscript', 'yoo! fuzz Arr<num> x = [1, 2, 3] fuzz num y = x["three"]'],
   ['incompatible array types', 'yoo! fuzz Arr<str> cmsi_classes = ["programing lab", 186, "interaction design", 370]'],
   ['incompatible dictionary key/value types', 'yoo! fuzz Dict<num> fuzz_gang = {Liam: 21, Chris: 21, Lina: "youngest"}'],
-  ['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'], 
-  
+  //['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'],
+
 ];
 
 describe('The semantic analyzer', () => {

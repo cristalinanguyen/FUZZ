@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for semantics/analyzer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">semantics</a> analyzer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>22/116</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.3% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>22/114</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const {
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
+  Type, VarDec, WhileExp,
+} = require('../ast');
+&nbsp;
+const { NumType, StringType, BoolType } = require('./builtins');
+&nbsp;
+const check = require('./check');
+&nbsp;
+ArrayExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.type = context.lookupType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  check.isArrayType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  this.size.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isInteger(this.size);</span>
+<span class="cstat-no" title="statement not covered" >  this.fill.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isBoolean(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  check.isAssignableTo(this.fill, this.type.memberType);</span>
+};
+&nbsp;
+AssignmentStatement.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.source.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  this.target.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isAssignableTo(this.source, this.target.type);</span>
+<span class="cstat-no" title="statement not covered" >  check.isNotReadOnly(this.target);</span>
+};
+&nbsp;
+BinaryExpression.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.left.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  this.right.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  if (/\*\*|[-+*/]/.test(this.op)) {</span>
+<span class="cstat-no" title="statement not covered" >    check.isInteger(this.left);</span>
+<span class="cstat-no" title="statement not covered" >    check.isInteger(this.right);</span>
+  } else <span class="cstat-no" title="statement not covered" >if (/[&amp;|]/.test(this.op)) {</span>
+<span class="cstat-no" title="statement not covered" >    check.isBoolean(this.left);</span>
+<span class="cstat-no" title="statement not covered" >    check.isBoolean(this.right);</span>
+  } else <span class="cstat-no" title="statement not covered" >if (/&lt;=?|&gt;=?/.test(this.op)) {</span>
+<span class="cstat-no" title="statement not covered" >    check.expressionsHaveTheSameType(this.left, this.right);</span>
+<span class="cstat-no" title="statement not covered" >    check.isInteger(this.left);</span>
+<span class="cstat-no" title="statement not covered" >    check.isInteger(this.right);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    check.expressionsHaveTheSameType(this.left, this.right);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  this.type = IntType;</span>
+};
+&nbsp;
+&nbsp;
+Call.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.callee = context.lookupValue(this.callee);</span>
+<span class="cstat-no" title="statement not covered" >  check.isFunction(this.callee, 'Attempt to call a non-function');</span>
+<span class="cstat-no" title="statement not covered" >  this.args.forEach(<span class="fstat-no" title="function not covered" >ar</span>g =&gt; <span class="cstat-no" title="statement not covered" >arg.analyze(context))</span>;</span>
+<span class="cstat-no" title="statement not covered" >  check.legalArguments(this.args, this.callee.params);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = this.callee.returnType;</span>
+};
+&nbsp;
+Chill.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  check.inLoop(context);</span>
+};
+&nbsp;
+Field.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.type = context.lookupType(this.type);</span>
+};
+&nbsp;
+// Function analysis is broken up into two parts in order to support (nutual)
+// recursion. First we have to do semantic analysis just on the signature
+// (including the return type). This is so other functions that may be declared
+// before this one have calls to this one checked.
+&nbsp;
+Func.prototype.analyzeSignature = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.bodyContext = context.createChildContextForFunctionBody();</span>
+<span class="cstat-no" title="statement not covered" >  this.params.forEach(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.analyze(this.bodyContext))</span>;</span>
+<span class="cstat-no" title="statement not covered" >  this.returnType = context.lookupType(this.returnType);</span>
+};
+&nbsp;
+Func.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction () {
+<span class="cstat-no" title="statement not covered" >  this.body.analyze(this.bodyContext);</span>
+<span class="cstat-no" title="statement not covered" >  check.isAssignableTo(this.body, this.returnType, 'Type mismatch in function return');</span>
+};
+&nbsp;
+IdExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.ref = context.lookupValue(this.ref);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = this.ref.type;</span>
+};
+&nbsp;
+IphExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.test.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isInteger(this.test, 'Test in iph');</span>
+<span class="cstat-no" title="statement not covered" >  this.consequent.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  if (this.alternate) {</span>
+<span class="cstat-no" title="statement not covered" >    this.alternate.analyze(context);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  check.isBoolean(this.test, 'Test in iph');</span>
+<span class="cstat-no" title="statement not covered" >  this.consequent.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  if (this.alternate) {</span>
+<span class="cstat-no" title="statement not covered" >    this.alternate.analyze(context);</span>
+  }
+};
+&nbsp;
+Literal.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction () {
+<span class="cstat-no" title="statement not covered" >  if (typeof this.value === 'number') {</span>
+<span class="cstat-no" title="statement not covered" >    this.type = IntType;</span>
+  } else <span class="cstat-no" title="statement not covered" >if (typeof this.value === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >    this.type = StringType;</span>
+  } else <span class="cstat-no" title="statement not covered" >if (typeof this.value === 'boolean') {</span>
+<span class="cstat-no" title="statement not covered" >    this.type = BoolType;</span>
+  }
+};
+&nbsp;
+MemberExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.record.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isRecord(this.record);</span>
+  const field = <span class="cstat-no" title="statement not covered" >this.record.type.getFieldForId(this.id);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = field.type;</span>
+};
+&nbsp;
+NegationExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.operand.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isInteger(this.operand, 'Operand of negation');</span>
+<span class="cstat-no" title="statement not covered" >  this.type = IntType;</span>
+<span class="cstat-no" title="statement not covered" >  check.isBoolean(this.operand, 'Operand of negation');</span>
+<span class="cstat-no" title="statement not covered" >  this.type = BoolType;</span>
+};
+&nbsp;
+Param.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.type = context.lookupType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  context.add(this);</span>
+};
+&nbsp;
+DictExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.type = context.lookupType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  check.isDictType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >  this.bindings.forEach(<span class="fstat-no" title="function not covered" >(b</span>inding) =&gt; {</span>
+    const field = <span class="cstat-no" title="statement not covered" >this.type.getFieldForId(binding.id);</span>
+<span class="cstat-no" title="statement not covered" >    binding.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >    check.isAssignableTo(binding.value, field.type);</span>
+  });
+};
+&nbsp;
+SubscriptedExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.array.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isArray(this.array);</span>
+<span class="cstat-no" title="statement not covered" >  this.subscript.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isInteger(this.subscript);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = this.array.type.memberType;</span>
+<span class="cstat-no" title="statement not covered" >  check.isString(this.subscript);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = this.array.type.memberType;</span>
+<span class="cstat-no" title="statement not covered" >  check.isBoolean(this.subscript);</span>
+<span class="cstat-no" title="statement not covered" >  this.type = this.array.type.memberType;</span>
+};
+&nbsp;
+Type.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.type.analyze(context);</span>
+};
+&nbsp;
+VarDec.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.init.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  if (this.type) {</span>
+<span class="cstat-no" title="statement not covered" >    this.type = context.lookupType(this.type);</span>
+<span class="cstat-no" title="statement not covered" >    check.isAssignableTo(this.init, this.type);</span>
+  } else {
+    // Yay! type inference!
+<span class="cstat-no" title="statement not covered" >    this.type = this.init.type;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  context.add(this);</span>
+};
+&nbsp;
+WhileExp.prototype.analyze = <span class="fstat-no" title="function not covered" >fu</span>nction (context) {
+<span class="cstat-no" title="statement not covered" >  this.test.analyze(context);</span>
+<span class="cstat-no" title="statement not covered" >  check.isInteger(this.test, 'Test in while');</span>
+<span class="cstat-no" title="statement not covered" >  this.body.analyze(context.createChildContextForLoop());</span>
+<span class="cstat-no" title="statement not covered" >  check.isBoolean(this.test, 'Test in while');</span>
+<span class="cstat-no" title="statement not covered" >  this.body.analyze(context.createChildContextForLoop());</span>
+&nbsp;
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 06 2019 10:27:33 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

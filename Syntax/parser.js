@@ -16,12 +16,12 @@ function arrayToNullable(a) {
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-  
+
   Program(_1, body) {
     return new Program(body.ast())
   },
-  Body(statement) {
-    return new Body(statement.ast())
+  Body(statements) {
+    return new Body(statements.ast())
   },
   //  VarDec       = "fuzz" Type id "=" Exp
 
@@ -96,7 +96,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   Returnt(_1, e) {
     return new Returnt(arrayToNullable(e.ast()));
-  }, 
+  },
   NonemptyListOf(first, _, rest) {
     return [first.ast(), ...rest.ast()];
   },

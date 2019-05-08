@@ -1,0 +1,9 @@
+yoo!
+fuzz num x = 10
+fuzz num y = 2.5
+fuzz str greet = "Hello, world"
+fuzz bool yay = cozy
+fuzz bool aww = not_cozy
+
+function test ()
+  returnt cozy ~

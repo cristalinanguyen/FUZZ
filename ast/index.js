@@ -17,8 +17,8 @@ class AssignmentStatement {
 }
 
 class Body {
-  constructor(statement) {
-      Object.assign(this, {statement});
+  constructor(statements) {
+      Object.assign(this, {statements});
   }
 }
 
@@ -61,8 +61,8 @@ class Field {
 }
 
 class Func {
-  constructor(id, params, returnType, body) {
-    Object.assign(this, { id, params, returnType, body });
+  constructor(id, returnType, params, body) {
+    Object.assign(this, { id, returnType, params, body });
   }
 }
 
@@ -97,8 +97,8 @@ class NegationExp {
 }
 
 class Param {
-  constructor(id, type) {
-    Object.assign(this, { id, type });
+  constructor(type, id) {
+    Object.assign(this, { type, id });
   }
 }
 
@@ -115,8 +115,8 @@ class PrimType {
 }
 
 class Program {
-  constructor(name) {
-    Object.assign(this, {name});
+  constructor(body) {
+    Object.assign(this, {body});
   }
 }
 
@@ -133,14 +133,14 @@ class SubscriptedExp {
 }
 
 class Type {
-  constructor(id, type) {
-    Object.assign(this, { id, type });
+  constructor(id) {
+    Object.assign(this, { id });
   }
 }
 
 class VarDec {
-  constructor(type, id, body) {
-    Object.assign(this, { type, id, body });
+  constructor(type, id, init) {
+    Object.assign(this, { type, id, init });
   }
 }
 
