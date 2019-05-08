@@ -46,16 +46,15 @@ const fixture = {
     '((3 === 3) ? (5) : (6))',
   ],
 
-  // UPDATE THESE
-  // fuzzAsValue: [
-  //   String.raw`print(let var x := "dog" in concat(x, "s") end)`,
-  //   /console.log\(\(\(\) => \{\s*let x_(\d+) = "dog";\s*return x_\1.concat\("s"\);\s*\}\)\(\)\)/,
-  // ],
-  //
-  // returnExpressionSequence: [
-  //   String.raw`let function f():int = let var x:= 1 in (1;nil;3) end in () end`,
-  //   /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*1;\s*null;\s*return 3\s*\};/,
-  // ],
+  fuzzAsValue: [
+    String.raw`print(fuzz str x = "dog" returnt cuddle(x, "s"))`,
+    /console.log\(\(\(\) => \{\s*let x_(\d+) = "dog";\s*return x_\1.concat\("s"\);\s*\}\)\(\)\)/,
+  ],
+  
+  returnExpressionSequence: [
+    String.raw`fuzz f() int = let var x:= 1 in (1;nil;3)`,
+    /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*1;\s*null;\s*return 3\s*\};/,
+  ],
 
   moreBuiltIns: [
     String.raw`(ord("x"); chr(30); substring("abc", 0, 1))`,
