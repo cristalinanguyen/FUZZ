@@ -17,14 +17,7 @@ fuzz bool yay = cozy
 fuzz bool aww = not_cozy
 
 function test ()
-  iph (x > y) 
-    returnt cozy
-  ~
-  elz iph (x == y)
-    returnt not_cozy
-  ~
-  elz
-    returnt greet
+  returnt cozy
   ~
 fuzz Arr<str> names = ["Liam", "Chris", "Lina", "Meelz", "Annie", "Soph"]
 fuzz Dict<num> age = {Annie: 21, Lina: 20}
