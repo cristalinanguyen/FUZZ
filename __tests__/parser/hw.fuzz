@@ -1,6 +1,0 @@
-function homework(num assignments) ~
-    iph (assignments > 1) ~
-        returnt not_cozy;
-    ~ elz ~
-        returnt cozy;
-~

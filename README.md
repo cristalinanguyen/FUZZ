@@ -16,94 +16,110 @@ FUZZ++ is a scripting language for all your cozy coding needs. Imagine, its rain
 
 ## Examples
 
+### Beginning a Program
+All programs in the language FUZZ++ begin with `yoo!`. 
+
 ### Data Types
 - boolean: `cozy` and `not_cozy`
 - string: `"my UGGs are soooo comfortable"`
 - numbers: `1`, `100`, `420`,`1.5`, `3.14`, `70.34799`
 - array: `[5, 6, 7, 8, 9, 10]`, `["compilers", "operating systems", "interaction design", "plang", "theory"]`
+- dictionary: `Dict<str> fuzzies = {chris: "domed", liam: "caffinated", meels: "dank gardens", annie: "late and wet", sophia: "went abroad"}`
 
 ### Variable Declarations
 Every new variable is declared using the keyword `fuzz` followed by its identifier.
 ```
-fuzz annies_coffee_cart_order = "iced chai with almond milk and a shot"
-fuzz num_of_juuls_chris_has_lost = 27
-fuzz meels_favorite_snack = "hot cheetos"
-fuzz dondi_wears_airpods = cozy
+fuzz str annies_coffee_cart_order = "iced chai with almond milk and a shot"
+fuzz num num_of_juuls_chris_has_lost = 27
+fuzz str meels_favorite_snack = "hot cheetos"
+fuzz bool dondi_wears_airpods = cozy
 ```
 
 ### Function Declarations
 
-The tilde (~) is used to enclose method bodies, as well as group statements in 'iph' statements and 'while' loops.
+The tilde (~) is used to denote the end of the method bodies, as well as group statements in 'iph' statements and 'while' loops.
 
 ```
-function dondi_wearing_airpods()~
+function dondi_wearing_airpods()
   returnt cozy
 ~
 
-function bjohnson()~
+function bjohnson()
   returnt "squirrel!"
 ~
 
-function mins_forney_spends_erasing(int classes)~
+function mins_forney_spends_erasing(num classes)
   fuzz time = 8 * classes
   returnt time
 ~  
 
-function toal_playing_vball(boolean weather)~
-  iph (weather)~
+function toal_playing_vball(bool weather)
+  iph (weather)
     returnt cozy
-~    
-  elz ~
+  ~    
+  elz 
     returnt not_cozy
+  ~
 ~
 
-function dorin()~
+function dorin()
   returnt "among friends"
 ~
 ```
 
 ### `iph` Statements
-An `iph` statement executes the block of code inside the tildes `~`, if the specified condition is true. Iph statements can be followed by 0 or more `elz iph` statements and an optional `elz` statement which execute when the condition is false
+An `iph` statement executes the following block of code, if the specified condition is true. Iph statements can be followed by 0 or more `elz iph` statements and an optional `elz` statement which execute when the condition is false. Iph statements are closed using a tilde (~).
 
 ```
-iph weather == 1 ~
-  fuzzies_wearing_jackets = cozy ~
-  elz iph weather == 0 ~
-  fuzzies_wearing_jackets = not_cozy ~
-  elz ~
-  return "I dont know what the fuzzies are wearing today." ~
+iph weather == 1
+  fuzzies_wearing_jackets = cozy
+~ 
+elz iph weather == 0
+  fuzzies_wearing_jackets = not_cozy
+~
+elz
+  return "I dont know what the fuzzies are wearing today."
+~
 
+```
+
+### `while` Loops
+A `while` loop executes a block of code while some specified condition remains true. The enclosed body of code is executed, and then checks to see if the condition still remains true before executing again. While loops are also closed using a tilde (~), which denotes the end of the function. 
+
+```
+while time < 1800
+  return "the sun has not set yet"
+~  
 ```
 
 ### Comments
 ```
-yoo! the Keckmas party was banging !!
+heres the thing: the Keckmas party was banging !!
 
 ```
 
 ### Arithmetic
 ```
-fuzz sum = 2 + 4
-fuzz difference = 4 - 2
-fuzz product = 2 * 4
-fuzz quotient = 4 / 2
-fuzz exponent = 2 ** 4
+fuzz num sum = 2 + 4
+fuzz num difference = 4 - 2
+fuzz num product = 2 * 4
+fuzz num quotient = 4 / 2
+fuzz num exponent = 2 ** 4
 ```
 
 ### Data Structures
 #### Arrays
 An array is an ordered sequence of elements of the same type.
 ```
-fuzzArr im_hungry = ["spicy tuna roll", "california roll", "salmon sashimi", "miso soup"];
+fuzz Arr<str> im_hungry = ["spicy tuna roll", "california roll", "salmon sashimi", "miso soup"]
 ```
 
 #### Dictionaries
 A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
 ```
-fuzzDict example = {key: value};
-fuzzDict vegan_food_prices = {"vegan burger": 5.50, "vegan chips": 2.99, "vegan romaine lettuce": 4.00};
+fuzz Dict<valueType> example = {key: value};
+fuzz Dict<num> vegan_food_prices = {vegan_burger: 5.50, vegan_chips: 2.99, vegan_romaine_lettuce: 4.00}
 ```
-
 
 ### Expressions
 A FUZZ++ expression is one of the following:

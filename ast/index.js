@@ -1,6 +1,6 @@
 class ArrayExp {
-  constructor(type, size, fill) {
-    Object.assign(this, { type, size, fill });
+  constructor(type, size) {
+    Object.assign(this, { type, size });
   }
 }
 
@@ -14,6 +14,12 @@ class AssignmentStatement {
     constructor(target, source) {
         Object.assign(this, { target, source });
     }
+}
+
+class Body {
+  constructor(statement) {
+      Object.assign(this, {statement});
+  }
 }
 
 class BinaryExpression {
@@ -36,16 +42,15 @@ class Chill {
   }
 }
 
-//HERE
-class DictType {
-  constructor(fields) {
-    Object.assign(this, { fields });
-  }
-}
-
 class DictExp {
   constructor(type, bindings) {
     Object.assign(this, { type, bindings });
+  }
+}
+
+class DictType {
+  constructor(fields) {
+    Object.assign(this, { fields });
   }
 }
 
@@ -91,21 +96,51 @@ class NegationExp {
   }
 }
 
+class Param {
+  constructor(id, type) {
+    Object.assign(this, { id, type });
+  }
+}
+
+class Parens {
+  constructor(_1, exp, _2) {
+    Object.assign(this, {exp});
+  }
+}
+
+class PrimType {
+  constructor(name) {
+    Object.assign(this, { name });
+  }
+}
+
+class Program {
+  constructor(name) {
+    Object.assign(this, {name});
+  }
+}
+
+class Returnt {
+  constructor(returnValue) {
+    this.returnValue = returnValue;
+  }
+}
+
 class SubscriptedExp {
   constructor(array, subscript) {
     Object.assign(this, { array, subscript });
   }
 }
 
-class TypeDec {
+class Type {
   constructor(id, type) {
     Object.assign(this, { id, type });
   }
 }
 
-class Variable {
-  constructor(id, type, init) {
-    Object.assign(this, { id, type, init });
+class VarDec {
+  constructor(type, id, body) {
+    Object.assign(this, { type, id, body });
   }
 }
 
@@ -116,7 +151,7 @@ class WhileExp {
 }
 
 module.exports = {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, DictType, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, NegationExp, SubscriptedExp,
-  TypeDec, Variable, WhileExp,
+  ArrayExp, ArrayType, AssignmentStatement, Body, BinaryExpression, Call, Chill, DictExp, DictType, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Parens, PrimType, Program, Returnt, NegationExp, SubscriptedExp,
+  Type, VarDec, WhileExp,
 };

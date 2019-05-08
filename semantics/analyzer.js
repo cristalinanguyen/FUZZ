@@ -1,10 +1,10 @@
 const {
-  ArrayExp, ArrayType, AssignmentStatement, BinaryExp, Call, Chill, DictType, DictExp, Field,
-  ForExp, Func, IdExp, IphExp, Literal, MemberExp, NegationExp, Param,
-  SubscriptedExp, TypeDec, Variable, WhileExp,
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
+  Type, VarDec, WhileExp,
 } = require('../ast');
 
-const { IntType, StringType, BoolType } = require('./builtins');
+const { NumType, StringType, BoolType } = require('./builtins');
 
 const check = require('./check');
 
@@ -16,10 +16,6 @@ ArrayExp.prototype.analyze = function (context) {
   this.fill.analyze(context);
   check.isBoolean(this.type);
   check.isAssignableTo(this.fill, this.type.memberType);
-};
-
-ArrayType.prototype.analyze = function (context) {
-  this.memberType = context.lookupType(this.memberType);
 };
 
 AssignmentStatement.prototype.analyze = function (context) {
@@ -60,9 +56,6 @@ Call.prototype.analyze = function (context) {
 Chill.prototype.analyze = function (context) {
   check.inLoop(context);
 };
-
-Dict.prototype.analyze = function (context) {
-  check.
 
 Field.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
@@ -128,6 +121,11 @@ NegationExp.prototype.analyze = function (context) {
   this.type = BoolType;
 };
 
+Param.prototype.analyze = function (context) {
+  this.type = context.lookupType(this.type);
+  context.add(this);
+};
+
 DictExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isDictType(this.type);
@@ -136,23 +134,6 @@ DictExp.prototype.analyze = function (context) {
     binding.analyze(context);
     check.isAssignableTo(binding.value, field.type);
   });
-};
-
-DictType.prototype.analyze = function (context) {
-  const usedFields = new Dict();
-  this.fields.forEach((field) => {
-    check.fieldHasNotBeenUsed(field.id, usedFields);
-    usedFields.add(field.id);
-    field.analyze(context);
-  });
-};
-
-DictType.prototype.getFieldForId = function (id) {
-  const field = this.fields.find(f => f.id === id);
-  if (field === null) {
-    throw new Error('No such field');
-  }
-  return field;
 };
 
 SubscriptedExp.prototype.analyze = function (context) {
@@ -167,11 +148,11 @@ SubscriptedExp.prototype.analyze = function (context) {
   this.type = this.array.type.memberType;
 };
 
-TypeDec.prototype.analyze = function (context) {
+Type.prototype.analyze = function (context) {
   this.type.analyze(context);
 };
 
-Variable.prototype.analyze = function (context) {
+VarDec.prototype.analyze = function (context) {
   this.init.analyze(context);
   if (this.type) {
     this.type = context.lookupType(this.type);
@@ -186,7 +167,6 @@ Variable.prototype.analyze = function (context) {
 WhileExp.prototype.analyze = function (context) {
   this.test.analyze(context);
   check.isInteger(this.test, 'Test in while');
-  this.body.analyze(context.createChildContextForLoop());
   check.isBoolean(this.test, 'Test in while');
   this.body.analyze(context.createChildContextForLoop());
 
