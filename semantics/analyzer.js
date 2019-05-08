@@ -11,7 +11,7 @@ const check = require('./check');
 ArrayExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isArrayType(this.type);
-  check.isInteger(this.size);
+  check.isNumber(this.size);
   check.isBoolean(this.type);
   check.isAssignableTo(this.type.memberType);
 };
@@ -27,15 +27,15 @@ BinaryExpression.prototype.analyze = function (context) {
   this.left.analyze(context);
   this.right.analyze(context);
   if (/\*\*|[-+*/]/.test(this.op)) {
-    check.isInteger(this.left);
-    check.isInteger(this.right);
+    check.isNumber(this.left);
+    check.isNumber(this.right);
   } else if (/[&|]/.test(this.op)) {
     check.isBoolean(this.left);
     check.isBoolean(this.right);
   } else if (/<=?|>=?/.test(this.op)) {
     check.expressionsHaveTheSameType(this.left, this.right);
-    check.isInteger(this.left);
-    check.isInteger(this.right);
+    check.isNumber(this.left);
+    check.isNumber(this.right);
   } else {
     check.expressionsHaveTheSameType(this.left, this.right);
   }
@@ -80,7 +80,7 @@ IdExp.prototype.analyze = function (context) {
 
 IphExp.prototype.analyze = function (context) {
   this.test.analyze(context);
-  check.isInteger(this.test, 'Test in iph');
+  check.isNumber(this.test, 'Test in iph');
   this.consequent.analyze(context);
   if (this.alternate) {
     this.alternate.analyze(context);
@@ -111,7 +111,7 @@ MemberExp.prototype.analyze = function (context) {
 
 NegationExp.prototype.analyze = function (context) {
   this.operand.analyze(context);
-  check.isInteger(this.operand, 'Operand of negation');
+  check.isNumber(this.operand, 'Operand of negation');
   this.type = NumType;
   check.isBoolean(this.operand, 'Operand of negation');
   this.type = BoolType;
@@ -145,7 +145,7 @@ SubscriptedExp.prototype.analyze = function (context) {
   this.array.analyze(context);
   check.isArray(this.array);
   this.subscript.analyze(context);
-  check.isInteger(this.subscript);
+  check.isNumber(this.subscript);
   this.type = this.array.type.memberType;
   check.isString(this.subscript);
   this.type = this.array.type.memberType;
@@ -171,7 +171,7 @@ VarDec.prototype.analyze = function (context) {
 
 WhileExp.prototype.analyze = function (context) {
   this.test.analyze(context);
-  check.isInteger(this.test, 'Test in while');
+  check.isNumber(this.test, 'Test in while');
   check.isBoolean(this.test, 'Test in while');
   this.body.analyze(context.createChildContextForLoop());
 };
