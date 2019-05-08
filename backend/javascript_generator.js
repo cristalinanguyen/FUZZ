@@ -125,6 +125,8 @@ Parameter.prototype.gen = function () {
 
 Program.prototype.gen = function() {
   const libraryFunctions = generateLibraryFunctions();
+  const body = generateBlock(this.body);
+  return prettyJs(target, { indent: '  ' });
 
 };
 
