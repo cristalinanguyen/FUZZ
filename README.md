@@ -140,3 +140,17 @@ A FUZZ++ statement is one of the following:
 - a `returnt` statement (returns a value from a function; it is an error if `returnt` appears somewhere other than in a function body)
 - an `iph`, `iph elz`, or `elz` statement
 - a `print` statement
+
+
+### Types of Static Semantic Errors
+- use of undeclared variable
+- incompatible type assignment
+- type mismatch in equality tests
+- incorrect number of arguments
+- return statement outside of function
+- chill statement outside of loop
+- identifier already declared within the scope
+- non integer in binary operation
+- call of non function
+- subscript of non array
+- incorrect field call
