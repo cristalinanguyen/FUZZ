@@ -11,11 +11,9 @@ const check = require('./check');
 ArrayExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isArrayType(this.type);
-  this.size.analyze(context);
   check.isInteger(this.size);
-  this.fill.analyze(context);
   check.isBoolean(this.type);
-  check.isAssignableTo(this.fill, this.type.memberType);
+  check.isAssignableTo(this.type.memberType);
 };
 
 AssignmentStatement.prototype.analyze = function (context) {
