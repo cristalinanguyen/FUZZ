@@ -67,12 +67,11 @@ Field.prototype.analyze = function (context) {
 Func.prototype.analyzeSignature = function (context) {
   this.bodyContext = context.createChildContextForFunctionBody();
   this.params.forEach(p => p.analyze(this.bodyContext));
-  this.returnType = context.lookupType(this.returnType);
 };
 
 Func.prototype.analyze = function () {
   this.body.analyze(this.bodyContext);
-  check.isAssignableTo(this.body, this.returnType, 'Type mismatch in function return');
+  check.isAssignableTo(this.body);
 };
 
 IdExp.prototype.analyze = function (context) {
