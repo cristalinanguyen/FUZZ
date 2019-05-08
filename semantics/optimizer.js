@@ -59,11 +59,14 @@ Call.prototype.optimize = function () {
   return this;
 };
 
+<<<<<<< HEAD
+=======
 Field.prototype.optimize = function () {
   this.value = this.value.optimize();
   return this;
 };
 
+>>>>>>> a83fe098dd8c0f96ddd60c989c300967a899d1c3
 Func.prototype.optimize = function () {
   if (this.body) {
     this.body = this.body.optimize();
