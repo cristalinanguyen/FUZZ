@@ -7,7 +7,7 @@
 
 const parse = require('../../syntax/parser');
 const analyze = require('../../semantics/analyzer');
-const generate = require('../javascript-generator');
+const generate = require('../javascript_generator');
 
 const fixture = {
   hello: [
