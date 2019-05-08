@@ -59,6 +59,11 @@ Call.prototype.optimize = function () {
   return this;
 };
 
+Field.prototype.optimize = function () {
+  this.value = this.value.optimize();
+  return this;
+};
+
 Func.prototype.optimize = function () {
   if (this.body) {
     this.body = this.body.optimize();
