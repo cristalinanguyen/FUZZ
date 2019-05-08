@@ -15,7 +15,7 @@
 
 const beautify = require('js-beautify');
 const {
-  ArrayExp, Assignment, BinaryExp, Chill, Call, FunDec, IdExp, IphExp, Fuzz, Literal, DictExp, NegationExp, TypeDec, WhileExp
+  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field, Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp, VarDec, WhileExp, Returnt
 } = require('../ast');
 const { StringType } = require('../semantics/builtins');
 
@@ -40,6 +40,8 @@ const javaScriptId = (() => {
 
 const builtin = {
   show([s]) { return `console.log(${s})`; },
+  show([b]) { return `console.log(${b})`; },
+  show([n]) { return `console.log(${n})`; },
   length([s]) { return `${s}.length`; },
   cuddle([s, t]) { return `${s}.concat(${t})`; }
 };
@@ -52,17 +54,15 @@ ArrayExp.prototype.gen = function () {
   return `Array(${this.size.gen()}).fill(${this.fill.gen()})`;
 };
 
-Assignment.prototype.gen = function () {
+AssignmentStatement.prototype.gen = function () {
   return `${this.target.gen()} = ${this.source.gen()}`;
 };
 
-BinaryExp.prototype.gen = function () {
+BinaryExpression.prototype.gen = function () {
   return `(${this.left.gen()} ${makeOp(this.op)} ${this.right.gen()})`;
 };
 
-Chill.prototype.gen = function () {
-  return 'chill';
-};
+// Body.
 
 Call.prototype.gen = function () {
   const args = this.args.map(a => a.gen());
@@ -70,6 +70,19 @@ Call.prototype.gen = function () {
     return builtin[this.callee.id](args);
   }
   return `${javaScriptId(this.callee)}(${args.join(',')})`;
+};
+
+Chill.prototype.gen = function () {
+  return 'chill';
+};
+
+DictExpression.prototype.gen = function () {
+  const formattedKeyValues = [];
+  const keyValues = this.exp.map(kv => kv.gen());
+  for (let i = 0; i < this.exp.length; i += 1) {
+    formattedKeyValues.push(keyValues[i]);
+  }
+  return `{ ${formattedKeyValues.join(", ")} }`;
 };
 
 Field.prototype.gen = function() {
@@ -98,9 +111,30 @@ Literal.prototype.gen = function () {
   return this.type === StringType ? `"${this.value}"` : this.value;
 };
 
+MemberExp.prototype.gen = function () {
+  return `${this.record.gen()}.${this.id}`;
+};
+
+Parameter.prototype.gen = function () {
+  return javaScriptId(this);
+};
+
+Program.prototype.gen = function() {
+  const libraryFunctions = generateLibraryFunctions();
+  const programStatements = generateBlock(this.statements);
+  const target = `${libraryFunctions}${programStatements}`;
+  return beautify(target, { indent: '  ' });
+};
+
 NegationExp.prototype.gen = function () {
   return `(- (${this.operand.gen()}))`;
 };
+
+SubscriptedExp.prototype.gen = function () {
+  return `${this.array.gen()}[${this.subscript.gen()}]`;
+};
+
+// Type.
 
 VarDec.prototype.gen = function () {
   return `let ${javaScriptId(this)} = ${this.init.gen()}`;
@@ -108,4 +142,8 @@ VarDec.prototype.gen = function () {
 
 WhileExp.prototype.gen = function () {
   return `while (${this.test.gen()}) { ${this.body.gen()} }`;
+};
+
+Returnt.prototype.gen = function () {
+  return `return ${this.returnValue ? this.returnValue.gen() : ''}`;
 };
