@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for semantics/context.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">semantics</a> context.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.04% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.22% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">34.62% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>9/26</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* adapted from rtoal's tiger compiler context https://github.com/rtoal/tiger-compiler/blob/master/semantics/context.js
+ * Semantic Analysis Context
+ *
+ * A context object holds state for the semantic analysis phase.
+ *
+ *   const Context = require('./semantics/context');
+ */
+&nbsp;
+const { standardFunctions, IntType, StringType, BoolType } = require('./builtins');
+&nbsp;
+require('./analyzer');
+&nbsp;
+// When doing semantic analysis we pass around context objects.
+//
+// A context object holds:
+//
+//   1. A reference to the parent context (or null if this is the root context).
+//      This allows to search for declarations from the current context outward.
+//
+//   2. A reference to the current function we are analyzing, if any. If we are
+//      inside a function, then return expressions are legal, and we will be
+//      able to type check them.
+//
+//   3. Whether we are in a loop (to know that a `break` is okay).
+//
+//   4. A map for looking up types declared in this context.
+//
+//   5. A map for looking up vars and functions declared in this context.
+//
+// The reason for the two maps is that in Tiger, types are kept in a separate
+// namespace from all of the variables and functions. So you could declare a
+// type called "list" and a variable called "list" in the same scope. But you
+// probably shouldn't.
+&nbsp;
+class Context {
+  constructor({ parent = null, currentFunction = null, inLoop = false } = {}) {
+    Object.assign(this, {
+      parent,
+      currentFunction,
+      inLoop,
+      typeMap: Object.create(null),
+      valueMap: Object.create(null),
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  cr</span>eateChildContextForFunctionBody(currentFunction) {
+    // When entering a new function, we're not in a loop anymore
+<span class="cstat-no" title="statement not covered" >    return new Context({ parent: this, currentFunction, inLoop: false });</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  cr</span>eateChildContextForLoop() {
+    // When entering a loop body, just set the inLoop field, retain others
+<span class="cstat-no" title="statement not covered" >    return new Context({ parent: this, currentFunction: this.currentFunction, inLoop: true });</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  cr</span>eateChildContextForBlock() {
+    // For a block, we have to retain both the function and loop settings.
+<span class="cstat-no" title="statement not covered" >    return new Context({</span>
+      parent: this,
+      currentFunction: this.currentFunction,
+      inLoop: this.inLoop,
+    });
+  }
+&nbsp;
+  // Adds a variable or function to this context.
+<span class="fstat-no" title="function not covered" >  ad</span>d(entity) {
+<span class="cstat-no" title="statement not covered" >    if (entity.id in this.valueMap) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error(`${entity.id} already declared in this scope`);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    this.valueMap[entity.id] = entity;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  ad</span>dType(typeDec) {
+<span class="cstat-no" title="statement not covered" >    if (typeDec.id in this.typeMap) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error(`Type ${typeDec.id} already declared in this scope`);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    this.typeMap[typeDec.id] = typeDec.type;</span>
+  }
+&nbsp;
+  // Returns the type entity bound to the given identifier, starting from this
+  // context and searching "outward" through enclosing contexts if necessary.
+<span class="fstat-no" title="function not covered" >  lo</span>okupType(id) {
+<span class="cstat-no" title="statement not covered" >    for (let context = this; context !== null; context = context.parent) {</span>
+<span class="cstat-no" title="statement not covered" >      if (id in context.typeMap) {</span>
+<span class="cstat-no" title="statement not covered" >        return context.typeMap[id];</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    throw new Error(`Type ${id} has not been declared`);</span>
+  }
+&nbsp;
+  // Returns the variable or function entity bound to the given identifier,
+  // starting from this context and searching "outward" through enclosing
+  // contexts if necessary.
+<span class="fstat-no" title="function not covered" >  lo</span>okupValue(id) {
+<span class="cstat-no" title="statement not covered" >    for (let context = this; context !== null; context = context.parent) {</span>
+<span class="cstat-no" title="statement not covered" >      if (id in context.valueMap) {</span>
+<span class="cstat-no" title="statement not covered" >        return context.valueMap[id];</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered" >    throw new Error(`${id} has not been declared`);</span>
+  }
+}
+&nbsp;
+Context.INITIAL = new Context();
+standardFunctions.forEach((f) =&gt; { Context.INITIAL.valueMap[f.id] = f; });
+Context.INITIAL.typeMap.num = NumType;
+Context.INITIAL.typeMap.string = StringType;
+Context.INITIAL.typeMap.boolean = BoolType;
+&nbsp;
+module.exports = Context;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 06 2019 10:27:33 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -26,7 +26,7 @@
 const fs = require('fs');
 const util = require('util');
 const yargs = require('yargs');
-const parse = require('./ast/parser');
+const parse = require('./Syntax/parser');
 const Context = require('./semantics/context');
 // const generateProgram = require('./backend/javascript-generator');
 

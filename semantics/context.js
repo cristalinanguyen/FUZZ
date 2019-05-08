@@ -6,7 +6,7 @@
  *   const Context = require('./semantics/context');
  */
 
-const { standardFunctions, IntType, StringType, BoolType } = require('./builtins');
+const { standardFunctions, NumType, StringType, BoolType } = require('./builtins');
 
 require('./analyzer');
 
@@ -103,8 +103,8 @@ class Context {
 
 Context.INITIAL = new Context();
 standardFunctions.forEach((f) => { Context.INITIAL.valueMap[f.id] = f; });
-Context.INITIAL.typeMap.int = IntType;
-Context.INITIAL.typeMap.string = StringType;
-Context.INITIAL.typeMap.boolean = BoolType;
+Context.INITIAL.typeMap.num = NumType;
+Context.INITIAL.typeMap.str = StringType;
+Context.INITIAL.typeMap.bool = BoolType;
 
 module.exports = Context;
