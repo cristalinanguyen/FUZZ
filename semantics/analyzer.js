@@ -167,7 +167,6 @@ VarDec.prototype.analyze = function (context) {
 WhileExp.prototype.analyze = function (context) {
   this.test.analyze(context);
   check.isInteger(this.test, 'Test in while');
-  this.body.analyze(context.createChildContextForLoop());
   check.isBoolean(this.test, 'Test in while');
   this.body.analyze(context.createChildContextForLoop());
 
