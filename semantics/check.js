@@ -26,8 +26,8 @@ module.exports = {
     doCheck(expression.type.constructor === DictType, 'Not a record');
   },
 
-  isInteger(expression) {
-    doCheck(expression.type === IntType, 'Not an integer');
+  isNumber(expression) {
+    doCheck(expression.type === NumType, 'Not an number');
   },
 
   isString(expression) {
@@ -36,13 +36,6 @@ module.exports = {
   
   isBoolean(expression) {
     doCheck(expression.type === BoolType, 'Not a boolean');
-  },
-
-  isIntegerOrBoolean(expression) {
-    doCheck(
-      expression.type === IntType || expression.type === BoolType,
-      'Not an integer or boolean',
-    );
   },
 
   isFunction(value) {

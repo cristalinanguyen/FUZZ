@@ -45,7 +45,7 @@ FUZZ {
   Field        = id ":" Exp
   DictExp      = "{" ListOf<Field, ","> "}"
   Call         = id "(" ListOf<Exp, ","> ")"
-  FunDec       = "function" id (typeId)? "(" ListOf<Param, ","> ")" Body* "~"
+  FunDec       = "function" id (typeId)? "(" ListOf<Param, ","> ")" Body "~"
   Param        = Type id
   keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool" |
                   "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |

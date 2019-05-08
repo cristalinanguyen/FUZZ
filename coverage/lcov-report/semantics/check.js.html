@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for semantics/check.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">semantics</a> check.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">18.18% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.05% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/21</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const util = require('util');
+const { ArrayType, Func, DictType, IdExp } = require('../ast');
+const { IntType, StringType, BoolType } = require('./builtins');
+&nbsp;
+function <span class="fstat-no" title="function not covered" >doCheck(</span>condition, message) {
+<span class="cstat-no" title="statement not covered" >  if (!condition) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error(message);</span>
+  }
+}
+module.exports = {
+  // Is this type an array type?
+  isArrayType(type) {
+<span class="cstat-no" title="statement not covered" >    doCheck(type.constructor === ArrayType, 'Not an array type');</span>
+  },
+&nbsp;
+  isDictType(type) {
+<span class="cstat-no" title="statement not covered" >    doCheck(type.constructor === DictType, 'Not a record type');</span>
+  },
+&nbsp;
+  // Is the type of this expression an array type?
+  isArray(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(expression.type.constructor === ArrayType, 'Not an array');</span>
+  },
+&nbsp;
+  isDict(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(expression.type.constructor === DictType, 'Not a record');</span>
+  },
+&nbsp;
+  isInteger(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(expression.type === IntType, 'Not an integer');</span>
+  },
+&nbsp;
+  isString(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(expression.type === StringType, 'Not a string');</span>
+  },
+  
+  isBoolean(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(expression.type === BoolType, 'Not a boolean');</span>
+  },
+&nbsp;
+  isIntegerOrBoolean(expression) {
+<span class="cstat-no" title="statement not covered" >    doCheck(</span>
+      expression.type === IntType || expression.type === BoolType,
+      'Not an integer or boolean',
+    );
+  },
+&nbsp;
+  isFunction(value) {
+<span class="cstat-no" title="statement not covered" >    doCheck(value.constructor === Func, 'Not a function');</span>
+  },
+&nbsp;
+  // Are two types exactly the same?
+  expressionsHaveTheSameType(e1, e2) {
+<span class="cstat-no" title="statement not covered" >    doCheck(e1.type === e2.type, 'Types must match exactly');</span>
+  },
+&nbsp;
+  // Can we assign expression to a variable/param/field of type type?
+  isAssignableTo(expression, type) {
+<span class="cstat-no" title="statement not covered" >    doCheck(</span>
+      (type.constructor === DictType) || (expression.type === type),
+      `Expression of type ${util.format(expression.type)} not compatible with type ${util.format(type)}`,
+    );
+  },
+&nbsp;
+  isNotReadOnly(lvalue) {
+<span class="cstat-no" title="statement not covered" >    doCheck(</span>
+      !(lvalue.constructor === IdExp &amp;&amp; lvalue.ref.readOnly),
+      'Assignment to read-only variable',
+    );
+  },
+&nbsp;
+  fieldHasNotBeenUsed(field, usedFields) {
+<span class="cstat-no" title="statement not covered" >    doCheck(!usedFields.has(field), `Field ${field} already declared`);</span>
+  },
+&nbsp;
+  // Same number of args and params; all types compatible
+  legalArguments(args, params) {
+<span class="cstat-no" title="statement not covered" >    doCheck(args.length === params.length,</span>
+      `Expected ${params.length} args in call, got ${args.length}`);
+<span class="cstat-no" title="statement not covered" >    args.forEach(<span class="fstat-no" title="function not covered" >(a</span>rg, i) =&gt; <span class="cstat-no" title="statement not covered" >this.isAssignableTo(arg, params[i].type))</span>;</span>
+  },
+&nbsp;
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 06 2019 10:27:33 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
