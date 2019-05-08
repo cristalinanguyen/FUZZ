@@ -29,7 +29,7 @@ const errors = [
   ['non integer subscript', 'yoo! fuzz Arr<num> x = [1, 2, 3] fuzz num y = x["three"]'],
   ['incompatible array types', 'yoo! fuzz Arr<str> cmsi_classes = ["programing lab", 186, "interaction design", 370]'],
   ['incompatible dictionary key/value types', 'yoo! fuzz Dict<num> fuzz_gang = {Liam: 21, Chris: 21, Lina: "youngest"}'],
-  //['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'],
+  ['returnt statement outside of function body', 'yoo! function cozy_coding() ~ returnt cozy'],
 
 ];
 
