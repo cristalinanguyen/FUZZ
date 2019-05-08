@@ -52,6 +52,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Field(id, _1, typeid) {
     return new Field(id.ast(), typeid.ast());
   },
+  Exp_binary(left, op, right) {
+    return new BinaryExpression(op.ast(), left.ast(), right.ast());
+  },
   Exp1_binary(left, op, right) {
     return new BinaryExpression(op.ast(), left.ast(), right.ast());
   },
