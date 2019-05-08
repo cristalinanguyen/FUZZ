@@ -15,7 +15,7 @@
 
 const beautify = require('js-beautify');
 const {
-  ArrayExp, AssignmentStatement, BinaryExpression, Call, Chill, DictExp, Field, Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp, VarDec, WhileExp, Returnt
+  ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field, Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp, VarDec, WhileExp, Returnt
 } = require('../ast');
 const { StringType } = require('../semantics/builtins');
 
@@ -62,7 +62,11 @@ BinaryExpression.prototype.gen = function () {
   return `(${this.left.gen()} ${makeOp(this.op)} ${this.right.gen()})`;
 };
 
-// Body.
+Body.prototype.gen = function () {
+  const programStatements = generateBlock(this.statements);
+  const target = `${libraryFunctions}${programStatements}`;
+  return beautify(target, { indent: '  ' });
+};
 
 Call.prototype.gen = function () {
   const args = this.args.map(a => a.gen());
@@ -121,9 +125,7 @@ Parameter.prototype.gen = function () {
 
 Program.prototype.gen = function() {
   const libraryFunctions = generateLibraryFunctions();
-  const programStatements = generateBlock(this.statements);
-  const target = `${libraryFunctions}${programStatements}`;
-  return beautify(target, { indent: '  ' });
+
 };
 
 NegationExp.prototype.gen = function () {
