@@ -121,7 +121,7 @@ MemberExp.prototype.gen = function () {
   return `${this.record.gen()}.${this.id}`;
 };
 
-Parameter.prototype.gen = function () {
+Param.prototype.gen = function () {
   return javaScriptId(this);
 };
 
