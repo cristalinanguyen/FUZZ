@@ -13,7 +13,7 @@
  *   generate(fuzzGenerator);
  */
 
-const beautify = require('js-beautify');
+// const beautify = require('js-beautify');
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field, Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp, VarDec, WhileExp, Returnt
 } = require('../ast');
@@ -47,7 +47,9 @@ const builtin = {
 };
 
 module.exports = function (exp) {
-  return beautify(exp.gen(), { indent_size: 2 });
+//   return beautify(exp.gen(), { indent_size: 2 });
+    return exp.gen();
+
 };
 
 ArrayExp.prototype.gen = function () {
