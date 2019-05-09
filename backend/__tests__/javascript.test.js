@@ -21,7 +21,7 @@ const fixture = {
   ],
 
   letAndAssign: [
-    String.raw`fuzz num x = 3`,
+    String.raw`yoo! fuzz num x = 3`,
     /let x_(\d+) = 3;/,
   ],
 
