@@ -82,7 +82,7 @@ Chill.prototype.gen = function () {
   return 'chill';
 };
 
-DictExpression.prototype.gen = function () {
+DictExp.prototype.gen = function () {
   const formattedKeyValues = [];
   const keyValues = this.exp.map(kv => kv.gen());
   for (let i = 0; i < this.exp.length; i += 1) {
