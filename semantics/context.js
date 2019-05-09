@@ -61,6 +61,12 @@ class Context {
       inLoop: this.inLoop,
     });
   }
+  
+   assertInFunction(message) {
+    if (!this.currentFunction) {
+      throw new Error(message);
+    }
+  }
 
   // Adds a variable or function to this context.
   add(entity) {
