@@ -46,7 +46,7 @@ const fixture = {
   ],
 
   subscript: [
-    String.raw`yoo! fuzz Arr<str> r = [] fuzz a = r[3] show a[0]`,
+    String.raw`yoo! fuzz Arr<str> r = [] fuzz a = r[3] showStr a[0]`,
     /let a_(\d+) = Array\(3\).fill\(""\);\s*console.log\(a_\1\[0\]\)/,
   ],
   
