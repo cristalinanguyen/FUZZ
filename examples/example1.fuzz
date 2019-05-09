@@ -15,13 +15,13 @@ colors.green
 
 cuddle(str s, str t)
 size(str s)
-show(str s)   -- print
+showStr(str s)   -- print
 
 yoo!
 heres the thing: This is cozy!!
 fuzz str greeting = "Hello, "
 fuzz str friend = "world"
-show(cuddle(greeting, friend))
+showStr(cuddle(greeting, friend))
 
 
 
