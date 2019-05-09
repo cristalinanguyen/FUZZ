@@ -28,7 +28,7 @@ const util = require('util');
 const yargs = require('yargs');
 const parse = require('./Syntax/parser');
 const Context = require('./semantics/context');
-const generateProgram = require('./javascript-generator');
+const generateProgram = require('./backend/javascript_generator');
 
 // If compiling from a string, return the AST, IR, or compiled code as a string.
 function compile(sourceCode, { astOnly, frontEndOnly, shouldOptimize }) {
