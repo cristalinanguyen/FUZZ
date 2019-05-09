@@ -11,12 +11,12 @@ const generate = require('../javascript_generator');
 
 const fixture = {
   hello: [
-    String.raw`show("Hello, world\n")`,
+    String.raw`yoo! show("Hello, world\n")`,
     String.raw`console.log("Hello, world\n")`,
   ],
 
   arithmetic: [
-    String.raw`5 * -2 + 8`,
+    String.raw`yoo! 5 * -2 + 8`,
     String.raw`((5 * (-(2))) + 8)`,
   ],
 
@@ -25,11 +25,10 @@ const fixture = {
     /let x_(\d+) = 3;/,
   ],
 
-  // Fix this
-  // call: [
-  //   String.raw`function hey (num x) returnt x ~`,
-  //   /function hey_\(x_\d+\) \{\s*};\s*f_\1\(1, ""\)/,
-  // ],
+  call: [
+    String.raw`yoo! function hey (num x) returnt x ~`,
+    /function hey_\(x_\d+\) \{\s*};\s*f_\1\(1, ""\)/,
+  ],
 
   whileLoop: [
     String.raw`yoo! while 7 chill ~`,
