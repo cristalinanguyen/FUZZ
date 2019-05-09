@@ -1,6 +1,6 @@
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field,
-  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp,
+  Func, IdExp, IphExp, Literal, MemberExp, Param, Program, Returnt, NegationExp, SubscriptedExp,
   Type, VarDec, WhileExp, Returnt,
 } = require('../ast');
 
@@ -127,10 +127,10 @@ Program.prototype.analyze = function (context) {
 };
 
 Returnt.prototype.analyze = function (context) {
-  // Check that you are in a function
-  // analyze the expression
-  // Check its type against the type of the function's return type if it is there
-}
+    this.returnValue.analyze(context);
+    context.assertInFunction("Return statement not in function");
+};
+
 DictExp.prototype.analyze = function (context) {
   this.type = context.lookupType(this.type);
   check.isDictType(this.type);
