@@ -127,8 +127,8 @@ Program.prototype.analyze = function (context) {
 };
 
 Returnt.prototype.analyze = function (context) {
-    this.returnValue.analyze(context);
-    context.assertInFunction("Return statement not in function");
+    this.returntValue.analyze(context);
+    context.assertInFunction("Returnt statement not in function");
 };
 
 DictExp.prototype.analyze = function (context) {
