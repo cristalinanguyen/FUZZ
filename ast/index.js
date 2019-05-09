@@ -121,8 +121,8 @@ class Program {
 }
 
 class Returnt {
-  constructor(returnValue) {
-    this.returnValue = returnValue;
+  constructor(returntValue) {
+    this.returntValue = returntValue;
   }
 }
 
