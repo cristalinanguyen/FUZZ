@@ -47,9 +47,9 @@ FUZZ {
   Call         = id "(" ListOf<Exp, ","> ")"
   FunDec       = "function" id (typeId)? "(" ListOf<Param, ","> ")" Body "~"
   Param        = Type id
-  keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool" |
-                  "fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" |
-                  "cozy" | "not_cozy") ~idrest
+  keyword      = ( "chill" | "iph" | "elz" | "returnt" | "fuzzArr" | "num" | "str" | "bool"
+                  |"fuzzDict" | "fuzz" | "function" | "while" | "print" | "not" | "showNum" | "showStr" 
+                  |"showBool" | "cuddle" | "length" | "cozy" | "not_cozy") ~idrest
   typeId       = id
   id           = ~keyword letter idrest*
   idrest       = letter | digit | "_"
