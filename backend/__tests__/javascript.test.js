@@ -32,37 +32,37 @@ const fixture = {
   // ],
 
   whileLoop: [
-    String.raw`while 7 chill ~`,
+    String.raw`yoo! while 7 chill ~`,
     /while \(7\) \{\s*break\s*\}/,
   ],
 
   iphThen: [
-    String.raw`iph 3 == 3 returnt 5 ~`,
+    String.raw`yoo! iph 3 == 3 returnt 5 ~`,
     '((3 === 3) ? (5) : (null))',
   ],
 
   iphThenElz: [
-    String.raw`if 3 == 3 returnt 5 ~ elz returnt 6 ~`,
+    String.raw`yoo! if 3 == 3 returnt 5 ~ elz returnt 6 ~`,
     '((3 === 3) ? (5) : (6))',
   ],
 
   fuzzAsValue: [
-    String.raw`print(fuzz str x = "dog" returnt cuddle(x, "s"))`,
+    String.raw`yoo! print(fuzz str x = "dog" returnt cuddle(x, "s"))`,
     /console.log\(\(\(\) => \{\s*let x_(\d+) = "dog";\s*return x_\1.concat\("s"\);\s*\}\)\(\)\)/,
   ],
   
   returnExpressionSequence: [
-    String.raw`fuzz f() int = let var x:= 1 in (1;nil;3)`,
+    String.raw`yoo! fuzz f() int = let var x:= 1 in (1;nil;3)`,
     /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*1;\s*null;\s*return 3\s*\};/,
   ],
 
   moreBuiltIns: [
-    String.raw`(ord("x"); chr(30); substring("abc", 0, 1))`,
+    String.raw`yoo! (ord("x"); chr(30); substring("abc", 0, 1))`,
     /\("x"\).charCodeAt\(0\);\s*String.fromCharCode\(30\);\s*"abc".substr\(0, 1\)/,
   ],
 
   evenMoreBuiltIns: [
-    String.raw`(not(1) ; size(""); exit(3))`,
+    String.raw`yoo! (not(1) ; size(""); exit(3))`,
     /\(!\(1\)\);\s*"".length;\s*process\.exit\(3\)/,
   ],
 };
