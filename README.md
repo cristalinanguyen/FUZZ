@@ -113,13 +113,25 @@ An array is an ordered sequence of elements of the same type.
 ```
 fuzz Arr<str> im_hungry = ["spicy tuna roll", "california roll", "salmon sashimi", "miso soup"]
 ```
+To return an element of an array, use a subscript to point to the index of the value, with the first element being denoted by:
+```
+fuzz str soup = im_hungry[3]
+```
 
 #### Dictionaries
 A dictionary stores pairs of elements as keys and values. All keys must be of the same type and all values must be of the same type.
+
 ```
 fuzz Dict<valueType> example = {key: value};
 fuzz Dict<num> vegan_food_prices = {vegan_burger: 5.50, vegan_chips: 2.99, vegan_romaine_lettuce: 4.00}
 ```
+
+To return an element of a dictionary, use a subscript to point to the key, which will return the value.
+
+```
+fuzz num less_than_four = vegan_food_prices.vegan_chips
+```
+  
 
 ### Expressions
 A FUZZ++ expression is one of the following:
