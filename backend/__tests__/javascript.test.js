@@ -56,19 +56,15 @@ const fixture = {
   ],
   
   returnExpressionSequence: [
-    String.raw`yoo! fuzz num f() fuzz num x = 1 ~`,
-    /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*1;\s*null;\s*return 3\s*\};/,
+    String.raw`yoo! function f() fuzz num x = 1 return 3 ~`,
+    /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*return 3\s*\};/,
   ],
 
   moreBuiltIns: [
-    String.raw`yoo! (ord("x"); chr(30); substring("abc", 0, 1))`,
-    /\("x"\).charCodeAt\(0\);\s*String.fromCharCode\(30\);\s*"abc".substr\(0, 1\)/,
+    String.raw`yoo! showStr("dog"); cuddle("abc", "123"); length("")`,
+    /console.log("dog"); concat("abc", "123"); \s*"".length/,
   ],
 
-  evenMoreBuiltIns: [
-    String.raw`yoo! (not(1) ; size(""); exit(3))`,
-    /\(!\(1\)\);\s*"".length;\s*process\.exit\(3\)/,
-  ],
 };
 
 describe('The JavaScript generator', () => {
