@@ -45,13 +45,18 @@ const fixture = {
     '((3 === 3) ? (5) : (6))',
   ],
 
+  subscript: [
+    String.raw`yoo! fuzz Arr<str> r = [] fuzz a = r[3] show a[0]`,
+    /let a_(\d+) = Array\(3\).fill\(""\);\s*console.log\(a_\1\[0\]\)/,
+  ],
+  
   fuzzAsValue: [
     String.raw`yoo! print(fuzz str x = "dog" returnt cuddle(x, "s"))`,
     /console.log\(\(\(\) => \{\s*let x_(\d+) = "dog";\s*return x_\1.concat\("s"\);\s*\}\)\(\)\)/,
   ],
   
   returnExpressionSequence: [
-    String.raw`yoo! fuzz f() int = let var x:= 1 in (1;nil;3)`,
+    String.raw`yoo! fuzz num f() fuzz num x = 1 ~`,
     /function f_(\d+)\(\) {\s*let x_(\d+) = 1;\s*1;\s*null;\s*return 3\s*\};/,
   ],
 
