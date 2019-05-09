@@ -17,7 +17,7 @@
 const {
   ArrayExp, AssignmentStatement, BinaryExpression, Body, Call, Chill, DictExp, Field, Func, IdExp, IphExp, Literal, MemberExp, Param, Program, NegationExp, SubscriptedExp, VarDec, WhileExp, Returnt
 } = require('../ast');
-const { StringType } = require('../semantics/builtins');
+const { StringType, NumType, BoolType } = require('../semantics/builtins');
 
 function makeOp(op) {
   return {'not=': '!=', '&': '&&', '|': '||', "not": "!"}[op] || op;
@@ -67,7 +67,8 @@ BinaryExpression.prototype.gen = function () {
 Body.prototype.gen = function () {
   const programStatements = generateBlock(this.statements);
   const target = `${libraryFunctions}${programStatements}`;
-  return beautify(target, { indent: '  ' });
+//   return beautify(target, { indent: '  ' });
+  return target;
 };
 
 Call.prototype.gen = function () {
@@ -115,6 +116,9 @@ IphExp.prototype.gen = function () {
 
 Literal.prototype.gen = function () {
   return this.type === StringType ? `"${this.value}"` : this.value;
+  return this.type === NumType ? `"${this.value}"` : this.value;
+  return this.type === BoolType ? `"${this.value}"` : this.value;
+
 };
 
 MemberExp.prototype.gen = function () {
