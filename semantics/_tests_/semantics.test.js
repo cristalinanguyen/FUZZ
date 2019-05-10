@@ -8,8 +8,8 @@
 const parse = require('../../Syntax/parser');
 const Context = require('../context');
 
-const program = String.raw`
-yoo!
+const program = String.raw
+`yoo!
 fuzz num x = 10
 fuzz num y = 2.5
 fuzz str greet = "Hello, world"
@@ -39,7 +39,7 @@ fuzz num b = x - y
 fuzz num c = x / y
 fuzz num d = x ** y
 fuzz str arr_test = names[0]
-fuzz str dict_test = age.Annie ~;
+fuzz str dict_test = age.Annie ~`;
 
 
 describe('The semantic analyzer', () => {
