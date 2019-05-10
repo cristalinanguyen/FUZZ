@@ -17,11 +17,30 @@ fuzz bool yay = cozy
 fuzz bool aww = not_cozy
 
 function test ()
-  returnt cozy ~`;
+  iph (x > y) 
+    showBool (cozy)
+  ~
+  elz iph (x == y)
+    showBool (not_cozy)
+  ~
+  elz
+    showStr (greet)
+  ~
+fuzz Arr<str> names = ["Liam", "Chris", "Lina", "Meelz", "Annie", "Soph"]
+fuzz Dict<num> age = {Annie: 21, Lina: 20}
+while (x > y & y > 0)
+  y = y * 2
+  iph (y == 5 | x == 20)
+    chill
+  ~
+~
+fuzz num a = x + y
+fuzz num b = x - y
+fuzz num c = x / y
+fuzz num d = x ** y
+fuzz str arr_test = names[0]
+fuzz str dict_test = age.Annie ~;
 
-/* fuzz bool s = x >= 1
-fuzz bool t = y <= 0
-fuzz bool u = x < 15 */
 
 describe('The semantic analyzer', () => {
   test('accepts the mega program with all syntactic forms', (done) => {
