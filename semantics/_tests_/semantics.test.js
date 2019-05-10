@@ -18,13 +18,13 @@ fuzz bool aww = not_cozy
 
 function test ()
   iph (x > y) 
-    showBool (cozy)
-  ~
+    fuzz num a = x + y  ~
   elz iph (x == y)
-    showBool (not_cozy)
+    fuzz num b = x - y
   ~
   elz
-    showStr (greet)
+    fuzz num c = x / y
+    fuzz num d = x ** y
   ~
 fuzz Arr<str> names = ["Liam", "Chris", "Lina", "Meelz", "Annie", "Soph"]
 fuzz Dict<num> age = {Annie: 21, Lina: 20}
@@ -34,10 +34,7 @@ while (x > y & y > 0)
     chill
   ~
 ~
-fuzz num a = x + y
-fuzz num b = x - y
-fuzz num c = x / y
-fuzz num d = x ** y
+
 fuzz str arr_test = names[0]
 fuzz str dict_test = age.Annie ~`;
 
