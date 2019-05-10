@@ -154,7 +154,7 @@ SubscriptedExp.prototype.analyze = function (context) {
 };
 
 Type.prototype.analyze = function (context) {
-  this.type.analyze(context);
+  this.type = context.lookup(this.type)
 };
 
 VarDec.prototype.analyze = function (context) {
